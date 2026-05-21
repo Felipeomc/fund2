@@ -41,7 +41,7 @@ input{width:100%;border:1px solid rgba(148,163,184,.35);background:#0b1220;color
 .figure-box{margin:10px 0 14px;padding:12px;border-radius:16px;background:rgba(30,41,59,.65);border:1px solid rgba(148,163,184,.18)}
 .figure-box svg{display:block;width:100%;height:auto;max-height:260px}
 .figure-caption{margin-top:8px;font-size:12px;color:#cbd5e1;line-height:1.45}
-.question{font-size:clamp(16px,2vw,20px);line-height:1.35;font-weight:900;margin:10px 0 14px}
+.question-wrap{display:flex;align-items:center;gap:16px;margin:8px 0 14px}.question-text{flex:1;min-width:0}.mini-figure{width:156px;min-width:156px;height:122px;border-radius:18px;background:linear-gradient(135deg,rgba(14,165,233,.16),rgba(168,85,247,.14));border:1px solid rgba(56,189,248,.28);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:8px 8px 6px;box-shadow:0 10px 24px rgba(2,8,23,.24)}.mini-figure-title{font-size:11px;line-height:1.15;font-weight:800;color:#e2e8f0;margin-bottom:5px;text-align:center;letter-spacing:.02em}.mini-figure svg{width:138px;height:92px}.question{font-size:clamp(16px,2vw,20px);line-height:1.35;font-weight:900;margin:0}@media (max-width:720px){.question-wrap{gap:10px;align-items:flex-start}.mini-figure{width:118px;min-width:118px;height:104px;padding:6px}.mini-figure-title{font-size:9px}.mini-figure svg{width:106px;height:78px}}
 .option{display:block;width:100%;margin:9px 0;padding:13px 15px;text-align:left;border-radius:14px;border:1px solid rgba(148,163,184,.24);background:#1b2638;color:#f8fafc;cursor:pointer;font-size:15px;line-height:1.35}
 .option:hover{border-color:var(--cyan);background:#233149}.option:disabled{cursor:not-allowed}.correct{background:rgba(34,197,94,.20)!important;border-color:#22c55e!important}.wrong{background:rgba(239,68,68,.20)!important;border-color:#ef4444!important}
 .feedback{display:none;margin-top:12px;padding:14px;border-radius:14px;background:rgba(15,23,42,.7);border:1px solid rgba(148,163,184,.24);color:#e2e8f0;line-height:1.45;font-size:14px}
@@ -67,6 +67,129 @@ const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkXYZ_9
 const QUIZ_DATA = {
   "6": {
     "facil": [
+      {
+        "area": "Robótica",
+        "context": "Um robô seguidor de linha tem dois sensores apontados para o chão. A pista é clara e a linha é escura.",
+        "question": "Para que o robô perceba a linha, qual informação os sensores precisam comparar?",
+        "options": [
+          {
+            "text": "diferença entre claro e escuro no chão",
+            "correct": true
+          },
+          {
+            "text": "altura da antena do controle remoto",
+            "correct": false
+          },
+          {
+            "text": "quantidade de letras no nome da equipe",
+            "correct": false
+          },
+          {
+            "text": "temperatura da bateria durante a largada",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensores de cor ou luz ajudam o robô a diferenciar a pista clara da linha escura.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô esportista usa câmeras para acompanhar a bola e motores para mover uma raquete.",
+        "question": "Qual conjunto descreve melhor perceber, decidir e agir?",
+        "options": [
+          {
+            "text": "câmeras percebem, programa decide e motores agem",
+            "correct": true
+          },
+          {
+            "text": "rodas percebem, adesivos decidem e sensores agem",
+            "correct": false
+          },
+          {
+            "text": "bateria percebe, parafuso decide e cor age",
+            "correct": false
+          },
+          {
+            "text": "carcaça percebe, roda calcula e mesa age",
+            "correct": false
+          }
+        ],
+        "explanation": "Em robótica, sensores captam dados, o controlador processa e os atuadores executam ações.",
+        "figureKey": "robotCycle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Durante um treino, o robô detecta um obstáculo à frente sem encostar nele.",
+        "question": "Qual componente é mais adequado para essa tarefa?",
+        "options": [
+          {
+            "text": "sensor ultrassônico",
+            "correct": true
+          },
+          {
+            "text": "adesivo colorido",
+            "correct": false
+          },
+          {
+            "text": "engrenagem decorativa",
+            "correct": false
+          },
+          {
+            "text": "chave de fenda",
+            "correct": false
+          }
+        ],
+        "explanation": "O sensor ultrassônico pode estimar distância e detectar obstáculos sem contato.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Uma equipe programou: se o sensor esquerdo vê preto, virar para a esquerda; se não, seguir verificando outros casos.",
+        "question": "Esse comando é um exemplo de:",
+        "options": [
+          {
+            "text": "condição de decisão",
+            "correct": true
+          },
+          {
+            "text": "enfeite mecânico",
+            "correct": false
+          },
+          {
+            "text": "peça de sustentação",
+            "correct": false
+          },
+          {
+            "text": "desenho da arena",
+            "correct": false
+          }
+        ],
+        "explanation": "A estrutura “se... então...” representa uma condição usada para decidir a ação do robô."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô foi testado na pista e saiu da linha várias vezes. A equipe observou o erro e ajustou o programa.",
+        "question": "Essa atitude mostra melhor qual prática da robótica?",
+        "options": [
+          {
+            "text": "testar, analisar e melhorar",
+            "correct": true
+          },
+          {
+            "text": "trocar tudo sem observar",
+            "correct": false
+          },
+          {
+            "text": "esconder o erro da equipe",
+            "correct": false
+          },
+          {
+            "text": "desligar sensores para simplificar",
+            "correct": false
+          }
+        ],
+        "explanation": "Projetos de robótica melhoram por ciclos de teste, observação e ajuste."
+      },
       {
         "area": "Português + Robótica",
         "context": "Um robô de tênis de mesa usa câmeras, sensores e IA para observar o jogador humano. Ele não foi criado para substituir uma competição oficial, mas para treinar atletas e ajustar o nível do desafio.",
@@ -432,6 +555,129 @@ const QUIZ_DATA = {
     ],
     "medio": [
       {
+        "area": "Robótica",
+        "context": "Em uma obra, um robô realiza tarefas repetitivas, como pintar paredes, enquanto os trabalhadores supervisionam o processo.",
+        "question": "Qual vantagem robótica aparece nessa situação?",
+        "options": [
+          {
+            "text": "reduzir esforço repetitivo e aumentar a segurança",
+            "correct": true
+          },
+          {
+            "text": "eliminar toda necessidade de planejamento humano",
+            "correct": false
+          },
+          {
+            "text": "impedir qualquer manutenção no equipamento",
+            "correct": false
+          },
+          {
+            "text": "substituir sensores por pintura manual",
+            "correct": false
+          }
+        ],
+        "explanation": "A prova aborda robôs em obras como apoio em tarefas repetitivas e potencialmente arriscadas."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usa dois sensores de cor: esquerdo e direito. Quando nenhum sensor vê preto, ele segue em frente.",
+        "question": "Qual leitura leva o robô a seguir em frente?",
+        "options": [
+          {
+            "text": "esquerdo branco e direito branco",
+            "correct": true
+          },
+          {
+            "text": "esquerdo preto e direito branco",
+            "correct": false
+          },
+          {
+            "text": "esquerdo branco e direito preto",
+            "correct": false
+          },
+          {
+            "text": "esquerdo preto e direito preto",
+            "correct": false
+          }
+        ],
+        "explanation": "No seguidor de linha, seguir em frente costuma ocorrer quando nenhum sensor está sobre a linha preta.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor ultrassônico envia ondas sonoras e usa o retorno delas para estimar distância.",
+        "question": "O que o robô consegue fazer com essa informação?",
+        "options": [
+          {
+            "text": "parar antes de colidir com um obstáculo",
+            "correct": true
+          },
+          {
+            "text": "mudar a cor da pista automaticamente",
+            "correct": false
+          },
+          {
+            "text": "aumentar a bateria sem recarregar",
+            "correct": false
+          },
+          {
+            "text": "descobrir o nome da equipe adversária",
+            "correct": false
+          }
+        ],
+        "explanation": "A distância medida permite tomar decisões antes do contato físico.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô esportista observa o desempenho do jogador e ajusta a dificuldade do treino.",
+        "question": "Qual recurso torna esse comportamento mais inteligente?",
+        "options": [
+          {
+            "text": "usar dados dos sensores para adaptar a ação",
+            "correct": true
+          },
+          {
+            "text": "executar sempre a mesma jogada sem mudança",
+            "correct": false
+          },
+          {
+            "text": "desligar as câmeras durante a partida",
+            "correct": false
+          },
+          {
+            "text": "ignorar o movimento do adversário",
+            "correct": false
+          }
+        ],
+        "explanation": "A adaptação depende da leitura dos dados e da alteração da resposta do robô.",
+        "figureKey": "cameraSensors"
+      },
+      {
+        "area": "Robótica",
+        "context": "Uma equipe percebeu que o robô vira tarde demais em curvas fechadas.",
+        "question": "Qual ajuste faz mais sentido testar primeiro?",
+        "options": [
+          {
+            "text": "reduzir o tempo antes da virada ou reagir mais cedo ao sensor",
+            "correct": true
+          },
+          {
+            "text": "aumentar apenas o tamanho do nome do robô",
+            "correct": false
+          },
+          {
+            "text": "trocar o mapa por uma folha em branco",
+            "correct": false
+          },
+          {
+            "text": "remover o programa de decisão",
+            "correct": false
+          }
+        ],
+        "explanation": "Se o robô reage tarde, o ajuste deve envolver tempo, velocidade ou leitura do sensor."
+      },
+      {
         "area": "Português + Robótica",
         "context": "Situação-base: um robô esportista acompanha a bola por câmeras, coleta dados por sensores e usa IA para ajustar o treino do jogador. Assim, ele modifica a dificuldade de acordo com o desempenho observado.",
         "question": "Qual inferência é mais adequada?",
@@ -793,6 +1039,129 @@ const QUIZ_DATA = {
       }
     ],
     "dificil": [
+      {
+        "area": "Robótica",
+        "context": "Um robô seguidor de linha usa este comportamento: se esquerda vê preto, corrige para esquerda; senão, se direita vê preto, corrige para direita; senão, segue em frente.",
+        "question": "Qual característica desse algoritmo é essencial?",
+        "options": [
+          {
+            "text": "a ordem dos testes muda a ação executada",
+            "correct": true
+          },
+          {
+            "text": "a cor da carcaça define a decisão",
+            "correct": false
+          },
+          {
+            "text": "os sensores são ignorados após a largada",
+            "correct": false
+          },
+          {
+            "text": "a bateria escolhe a melhor curva sozinha",
+            "correct": false
+          }
+        ],
+        "explanation": "Em estruturas condicionais, a ordem dos testes define qual ação será executada primeiro.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usa câmera, sensores e IA para jogar tênis de mesa com um humano. Ele adapta o treino ao nível do jogador.",
+        "question": "Qual interpretação é mais adequada?",
+        "options": [
+          {
+            "text": "o robô funciona como parceiro de treino adaptativo",
+            "correct": true
+          },
+          {
+            "text": "a IA dispensa qualquer sensor físico",
+            "correct": false
+          },
+          {
+            "text": "o robô só serve se tiver aparência humana",
+            "correct": false
+          },
+          {
+            "text": "o jogador humano não influencia a resposta do robô",
+            "correct": false
+          }
+        ],
+        "explanation": "O ponto central é a adaptação do robô ao desempenho do usuário.",
+        "figureKey": "cameraSensors"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de obra executa 11.000 amarrações por dia, enquanto um trabalhador faz 6.500 em média, em uma tarefa repetitiva.",
+        "question": "Qual conclusão técnica é mais prudente?",
+        "options": [
+          {
+            "text": "ele pode aumentar produtividade em uma tarefa específica",
+            "correct": true
+          },
+          {
+            "text": "ele será melhor que humanos em qualquer atividade",
+            "correct": false
+          },
+          {
+            "text": "ele elimina todo risco de acidentes sem supervisão",
+            "correct": false
+          },
+          {
+            "text": "ele não precisa de manutenção nem programação",
+            "correct": false
+          }
+        ],
+        "explanation": "O dado permite concluir ganho naquela tarefa, não superioridade em qualquer situação."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor de distância acusa obstáculo muito próximo, mas o robô continua acelerando.",
+        "question": "Qual falha provável está no projeto?",
+        "options": [
+          {
+            "text": "o programa não usa corretamente a leitura do sensor",
+            "correct": true
+          },
+          {
+            "text": "a pista está necessariamente sem linha preta",
+            "correct": false
+          },
+          {
+            "text": "a engrenagem virou uma bateria",
+            "correct": false
+          },
+          {
+            "text": "o sensor mediu português em vez de distância",
+            "correct": false
+          }
+        ],
+        "explanation": "Se há leitura de obstáculo e a ação não muda, o problema pode estar na lógica de decisão.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Ao testar duas versões de um programa, a equipe mede tempo de percurso, colisões e perda da linha.",
+        "question": "Por que registrar esses dados melhora o projeto?",
+        "options": [
+          {
+            "text": "permite comparar evidências antes de escolher a melhor versão",
+            "correct": true
+          },
+          {
+            "text": "substitui a necessidade de observar o robô em movimento",
+            "correct": false
+          },
+          {
+            "text": "garante que qualquer programa terá o mesmo resultado",
+            "correct": false
+          },
+          {
+            "text": "serve apenas para decorar o relatório final",
+            "correct": false
+          }
+        ],
+        "explanation": "Métricas ajudam a comparar versões com base em evidências."
+      },
       {
         "area": "Português + Robótica",
         "context": "Texto curto: Robôs esportistas ainda não substituem atletas, mas já servem para treino especializado. O FORPHEUS, por exemplo, ajusta o desafio ao estilo do jogador.",
@@ -1158,6 +1527,129 @@ const QUIZ_DATA = {
   "7": {
     "facil": [
       {
+        "area": "Robótica",
+        "context": "Um robô tem sensores de cor na frente e motores nas rodas.",
+        "question": "Qual par componente-função está correto?",
+        "options": [
+          {
+            "text": "sensor percebe a pista; motor movimenta o robô",
+            "correct": true
+          },
+          {
+            "text": "motor mede luz; sensor empurra a roda",
+            "correct": false
+          },
+          {
+            "text": "bateria desenha a linha; roda calcula a cor",
+            "correct": false
+          },
+          {
+            "text": "parafuso decide; carcaça programa",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensores coletam informações e motores produzem movimento.",
+        "figureKey": "robotCycle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Em uma pista, os dois sensores de cor detectam preto ao mesmo tempo em uma marca especial.",
+        "question": "O programa pode usar essa situação para:",
+        "options": [
+          {
+            "text": "executar uma ação específica, como parar ou dar volta",
+            "correct": true
+          },
+          {
+            "text": "ignorar a marca e apagar a memória",
+            "correct": false
+          },
+          {
+            "text": "mudar a cor do chão da arena",
+            "correct": false
+          },
+          {
+            "text": "transformar o sensor em motor",
+            "correct": false
+          }
+        ],
+        "explanation": "Uma combinação de leituras pode representar uma condição especial no programa.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô enfermeiro mede sinais sem contato direto em algumas situações.",
+        "question": "Qual objetivo robótico está mais ligado a esse uso?",
+        "options": [
+          {
+            "text": "aumentar segurança e reduzir exposição humana",
+            "correct": true
+          },
+          {
+            "text": "decorar o hospital com peças eletrônicas",
+            "correct": false
+          },
+          {
+            "text": "substituir todo diagnóstico médico sozinho",
+            "correct": false
+          },
+          {
+            "text": "impedir que sensores sejam usados",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs podem reduzir exposição humana em tarefas repetitivas ou de risco."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usa engrenagens entre o motor e a roda.",
+        "question": "Por que a equipe precisa conhecer esse conjunto?",
+        "options": [
+          {
+            "text": "porque engrenagens podem alterar sentido e movimento da roda",
+            "correct": true
+          },
+          {
+            "text": "porque engrenagens dispensam programação",
+            "correct": false
+          },
+          {
+            "text": "porque a roda para de precisar de motor",
+            "correct": false
+          },
+          {
+            "text": "porque o sensor ultrassônico vira engrenagem",
+            "correct": false
+          }
+        ],
+        "explanation": "Engrenagens influenciam como o movimento do motor chega à roda.",
+        "figureKey": "gearTrain4"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô autônomo precisa transportar objetos em uma fábrica.",
+        "question": "Qual recurso ajuda mais na navegação segura?",
+        "options": [
+          {
+            "text": "sensores para detectar obstáculos e posição",
+            "correct": true
+          },
+          {
+            "text": "somente pintura externa chamativa",
+            "correct": false
+          },
+          {
+            "text": "ausência completa de controlador",
+            "correct": false
+          },
+          {
+            "text": "rodas travadas para não sair do lugar",
+            "correct": false
+          }
+        ],
+        "explanation": "Navegação segura exige percepção do ambiente e controle de movimento."
+      },
+      {
         "area": "Português + Robótica",
         "context": "Um robô de tênis de mesa lê o estilo do jogador, calcula trajetórias e muda seu comportamento durante os ralis.",
         "question": "A ideia de “adaptar-se” significa que o robô:",
@@ -1519,6 +2011,129 @@ const QUIZ_DATA = {
       }
     ],
     "medio": [
+      {
+        "area": "Robótica",
+        "context": "No seguidor de linha, a equipe quer que o robô dê uma volta completa apenas quando os dois sensores veem preto.",
+        "question": "Qual condição representa melhor esse caso?",
+        "options": [
+          {
+            "text": "sensor esquerdo = preto E sensor direito = preto",
+            "correct": true
+          },
+          {
+            "text": "sensor esquerdo = branco E sensor direito = branco",
+            "correct": false
+          },
+          {
+            "text": "sensor esquerdo = preto OU bateria fraca",
+            "correct": false
+          },
+          {
+            "text": "sensor direito = branco OU roda colorida",
+            "correct": false
+          }
+        ],
+        "explanation": "Para exigir os dois sensores no preto, a condição deve usar E.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de construção foi criado para lixar, furar ou manipular materiais em locais perigosos.",
+        "question": "Qual decisão de projeto é mais coerente?",
+        "options": [
+          {
+            "text": "usar sensores e controle preciso para reduzir riscos",
+            "correct": true
+          },
+          {
+            "text": "retirar sensores para ficar mais leve",
+            "correct": false
+          },
+          {
+            "text": "programar movimentos aleatórios no canteiro",
+            "correct": false
+          },
+          {
+            "text": "impedir supervisão humana durante testes",
+            "correct": false
+          }
+        ],
+        "explanation": "Em ambientes perigosos, percepção e controle preciso são essenciais."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor ultrassônico detecta obstáculo a 12 cm. A regra do robô é: se distância < 15 cm, parar.",
+        "question": "Qual ação deve ocorrer?",
+        "options": [
+          {
+            "text": "parar",
+            "correct": true
+          },
+          {
+            "text": "acelerar",
+            "correct": false
+          },
+          {
+            "text": "ignorar o obstáculo",
+            "correct": false
+          },
+          {
+            "text": "girar a câmera para trás sempre",
+            "correct": false
+          }
+        ],
+        "explanation": "Como 12 é menor que 15, a condição de parada é verdadeira.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô esportista se adapta ao estilo do jogador humano ao longo do tempo.",
+        "question": "Qual ciclo descreve melhor esse comportamento?",
+        "options": [
+          {
+            "text": "coletar dados, analisar desempenho e ajustar resposta",
+            "correct": true
+          },
+          {
+            "text": "pintar a mesa, desligar motores e guardar sensores",
+            "correct": false
+          },
+          {
+            "text": "sortear movimentos sem observar a partida",
+            "correct": false
+          },
+          {
+            "text": "trocar a bola por uma engrenagem",
+            "correct": false
+          }
+        ],
+        "explanation": "Adaptação envolve coletar dados, interpretar e modificar a ação.",
+        "figureKey": "robotCycle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Durante um teste, o robô sempre perde a linha em curvas para a direita.",
+        "question": "Qual evidência deve ser verificada primeiro?",
+        "options": [
+          {
+            "text": "leituras do sensor direito e velocidade dos motores",
+            "correct": true
+          },
+          {
+            "text": "cor do crachá do estudante",
+            "correct": false
+          },
+          {
+            "text": "quantidade de cartazes na sala",
+            "correct": false
+          },
+          {
+            "text": "nome escolhido para o robô",
+            "correct": false
+          }
+        ],
+        "explanation": "A falha em curvas pode envolver leitura lateral e controle dos motores."
+      },
       {
         "area": "Português + Robótica",
         "context": "Em uma partida de treino, o robô FORPHEUS observa velocidade, direção da bola e padrões do jogador para ajustar a devolução.",
@@ -1882,6 +2497,129 @@ const QUIZ_DATA = {
       }
     ],
     "dificil": [
+      {
+        "area": "Robótica",
+        "context": "Um programa verifica primeiro o sensor esquerdo. Se ele vê preto, o robô gira à esquerda e nem chega a testar a condição seguinte.",
+        "question": "Qual risco existe nessa lógica?",
+        "options": [
+          {
+            "text": "quando os dois sensores veem preto, a ação especial pode nunca ocorrer",
+            "correct": true
+          },
+          {
+            "text": "o robô sempre identifica branco como preto",
+            "correct": false
+          },
+          {
+            "text": "a bateria para de enviar energia ao motor",
+            "correct": false
+          },
+          {
+            "text": "a engrenagem inverte a gramática do código",
+            "correct": false
+          }
+        ],
+        "explanation": "Se uma condição anterior captura o caso, a condição especial precisa ser testada antes.",
+        "figureKey": "lineFollower"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de obra aumenta a produtividade em amarrações de aço, mas continua sendo usado com supervisão técnica.",
+        "question": "Qual afirmação é mais correta?",
+        "options": [
+          {
+            "text": "automação melhora tarefas específicas, mas exige controle e segurança",
+            "correct": true
+          },
+          {
+            "text": "automação elimina manutenção, projeto e supervisão",
+            "correct": false
+          },
+          {
+            "text": "robôs de obra não usam sensores nem programação",
+            "correct": false
+          },
+          {
+            "text": "qualquer tarefa humana passa a ser proibida",
+            "correct": false
+          }
+        ],
+        "explanation": "A prova trabalha a ideia de apoio robótico em tarefas específicas e seguras."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor ultrassônico mede distância várias vezes por segundo. O valor oscila entre 14 cm e 16 cm, e a regra de parada é menor que 15 cm.",
+        "question": "Qual melhoria evita decisões instáveis?",
+        "options": [
+          {
+            "text": "usar margem ou confirmar leituras antes de parar",
+            "correct": true
+          },
+          {
+            "text": "apagar todas as medições anteriores",
+            "correct": false
+          },
+          {
+            "text": "trocar o obstáculo por uma cor clara",
+            "correct": false
+          },
+          {
+            "text": "usar somente o nome da equipe na decisão",
+            "correct": false
+          }
+        ],
+        "explanation": "Oscilações perto do limite podem exigir confirmação ou margem de segurança.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Em um trem com quatro engrenagens em sequência, cada contato inverte o sentido de rotação.",
+        "question": "Se a engrenagem 1 gira no sentido horário, a engrenagem 4 gira:",
+        "options": [
+          {
+            "text": "no sentido anti-horário",
+            "correct": true
+          },
+          {
+            "text": "também no sentido horário",
+            "correct": false
+          },
+          {
+            "text": "sem movimento em qualquer caso",
+            "correct": false
+          },
+          {
+            "text": "para cima, sem rotação",
+            "correct": false
+          }
+        ],
+        "explanation": "Com quatro engrenagens em sequência: 1 horário, 2 anti-horário, 3 horário, 4 anti-horário.",
+        "figureKey": "gearTrain4"
+      },
+      {
+        "area": "Robótica",
+        "context": "Uma equipe comparou dois programas: A conclui a pista em 70 s com 3 colisões; B conclui em 82 s sem colisões.",
+        "question": "Se a prioridade da prova for segurança, qual escolha é mais justificável?",
+        "options": [
+          {
+            "text": "programa B, porque evita colisões mesmo sendo mais lento",
+            "correct": true
+          },
+          {
+            "text": "programa A, porque velocidade sempre vence segurança",
+            "correct": false
+          },
+          {
+            "text": "qualquer um, pois colisões não importam em robótica",
+            "correct": false
+          },
+          {
+            "text": "nenhum, pois dados de teste não ajudam",
+            "correct": false
+          }
+        ],
+        "explanation": "Quando segurança é prioridade, o programa sem colisões pode ser melhor apesar do tempo maior."
+      },
       {
         "area": "Português + Robótica",
         "context": "Situação-base: o FORPHEUS usa câmeras, sensores e IA para observar o estilo de jogo do atleta humano. Em vez de substituir o jogador, ele ajusta a dificuldade do treino e atua como parceiro de prática.",
@@ -2247,6 +2985,128 @@ const QUIZ_DATA = {
   "8": {
     "facil": [
       {
+        "area": "Robótica",
+        "context": "Um robô de cozinha usa braço mecânico, sensores de temperatura e câmera para acompanhar o preparo.",
+        "question": "Qual parte executa ações físicas como mexer ou cortar?",
+        "options": [
+          {
+            "text": "braço mecânico",
+            "correct": true
+          },
+          {
+            "text": "texto da receita impresso",
+            "correct": false
+          },
+          {
+            "text": "cor da parede",
+            "correct": false
+          },
+          {
+            "text": "nome do alimento",
+            "correct": false
+          }
+        ],
+        "explanation": "O braço mecânico é o atuador responsável por ações físicas.",
+        "figureKey": "robotCycle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Em um hospital, um robô de logística transporta materiais pelos corredores.",
+        "question": "Qual capacidade é essencial para evitar acidentes?",
+        "options": [
+          {
+            "text": "detectar pessoas e obstáculos no caminho",
+            "correct": true
+          },
+          {
+            "text": "andar sempre sem sensores",
+            "correct": false
+          },
+          {
+            "text": "ignorar portas e corredores",
+            "correct": false
+          },
+          {
+            "text": "funcionar apenas se parecer humano",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs móveis precisam perceber o ambiente para navegar com segurança.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô industrial automatiza embalagem de produtos em uma fábrica.",
+        "question": "Qual objetivo é mais comum nesse uso?",
+        "options": [
+          {
+            "text": "aumentar repetibilidade, eficiência e controle",
+            "correct": true
+          },
+          {
+            "text": "eliminar todas as normas de segurança",
+            "correct": false
+          },
+          {
+            "text": "trocar energia elétrica por papel",
+            "correct": false
+          },
+          {
+            "text": "impedir qualquer manutenção preventiva",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs industriais são usados para tarefas repetitivas com eficiência e controle."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um drone autônomo mapeia uma mina subterrânea antes da entrada de trabalhadores.",
+        "question": "Qual benefício robótico é mais evidente?",
+        "options": [
+          {
+            "text": "reduzir exposição humana a áreas de risco",
+            "correct": true
+          },
+          {
+            "text": "aumentar o peso dos equipamentos manuais",
+            "correct": false
+          },
+          {
+            "text": "evitar qualquer coleta de dados",
+            "correct": false
+          },
+          {
+            "text": "substituir mapas por adivinhação",
+            "correct": false
+          }
+        ],
+        "explanation": "Mapear áreas perigosas com robôs reduz riscos para pessoas."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usa software para seguir uma receita e sensores para avaliar temperatura e cor do alimento.",
+        "question": "Qual integração está presente?",
+        "options": [
+          {
+            "text": "hardware, sensores e programa trabalhando juntos",
+            "correct": true
+          },
+          {
+            "text": "apenas decoração externa do robô",
+            "correct": false
+          },
+          {
+            "text": "somente sorteio de movimentos",
+            "correct": false
+          },
+          {
+            "text": "ausência de controle no preparo",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs combinam componentes físicos, sensores e software."
+      },
+      {
         "area": "Português + Robótica",
         "context": "O futuro da robótica não depende apenas de robôs parecidos com humanos. A tendência forte é a automação em indústria, saúde, logística, educação e pesquisa.",
         "question": "Qual inferência é mais adequada?",
@@ -2610,6 +3470,127 @@ const QUIZ_DATA = {
     ],
     "medio": [
       {
+        "area": "Robótica",
+        "context": "Um robô de cozinha recebe dados de sensores de temperatura e câmera. O programa ajusta o tempo de preparo.",
+        "question": "Qual decisão depende diretamente dos sensores?",
+        "options": [
+          {
+            "text": "continuar, reduzir ou encerrar o cozimento",
+            "correct": true
+          },
+          {
+            "text": "mudar o nome da receita no cartaz",
+            "correct": false
+          },
+          {
+            "text": "apagar a memória sem verificar dados",
+            "correct": false
+          },
+          {
+            "text": "trocar a função do motor por geografia",
+            "correct": false
+          }
+        ],
+        "explanation": "O programa usa as leituras para ajustar o processo de preparo."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô cirúrgico consome energia, exige manutenção e trabalha sob comando de profissionais.",
+        "question": "Qual visão é mais realista?",
+        "options": [
+          {
+            "text": "ele amplia precisão e apoio técnico, mas não dispensa controle humano",
+            "correct": true
+          },
+          {
+            "text": "ele substitui toda decisão médica em qualquer caso",
+            "correct": false
+          },
+          {
+            "text": "ele funciona sem energia por ser avançado",
+            "correct": false
+          },
+          {
+            "text": "ele não precisa de sensores nem calibração",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs médicos apoiam procedimentos, mas exigem supervisão, energia e controle."
+      },
+      {
+        "area": "Robótica",
+        "context": "Em logística, um robô precisa levar caixas de um ponto a outro sem bater nas prateleiras.",
+        "question": "Qual conjunto de funções é mais necessário?",
+        "options": [
+          {
+            "text": "localização, detecção de obstáculos e controle dos motores",
+            "correct": true
+          },
+          {
+            "text": "pintura externa, música e nome curto",
+            "correct": false
+          },
+          {
+            "text": "ausência de mapa e movimentos aleatórios",
+            "correct": false
+          },
+          {
+            "text": "engrenagens soltas e sensores desligados",
+            "correct": false
+          }
+        ],
+        "explanation": "Robôs móveis precisam localizar-se, perceber obstáculos e controlar movimento."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usa visão computacional para identificar objetos e um braço para separá-los.",
+        "question": "Qual afirmação está correta?",
+        "options": [
+          {
+            "text": "a câmera fornece dados e o braço executa a manipulação",
+            "correct": true
+          },
+          {
+            "text": "o braço interpreta imagens sem programa",
+            "correct": false
+          },
+          {
+            "text": "a câmera substitui toda energia elétrica",
+            "correct": false
+          },
+          {
+            "text": "a visão computacional impede movimento físico",
+            "correct": false
+          }
+        ],
+        "explanation": "A visão fornece informação; o atuador manipula objetos.",
+        "figureKey": "cameraSensors"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sistema robótico aprende com feedback do usuário para melhorar a execução de receitas.",
+        "question": "Qual característica aparece nessa situação?",
+        "options": [
+          {
+            "text": "adaptação com base em dados de uso",
+            "correct": true
+          },
+          {
+            "text": "execução cega sem memória",
+            "correct": false
+          },
+          {
+            "text": "movimento sem software",
+            "correct": false
+          },
+          {
+            "text": "funcionamento sem sensores",
+            "correct": false
+          }
+        ],
+        "explanation": "Feedback e dados permitem ajustar o comportamento ao longo do tempo."
+      },
+      {
         "area": "Português + Robótica",
         "context": "Situação-base: a procura por profissionais de robótica aumenta porque a tecnologia está sendo aplicada em diferentes setores. O texto destaca automação industrial, saúde, logística, pesquisa e educação.",
         "question": "Qual alternativa resume melhor essa ideia central?",
@@ -2972,6 +3953,127 @@ const QUIZ_DATA = {
       }
     ],
     "dificil": [
+      {
+        "area": "Robótica",
+        "context": "Um robô industrial usa visão computacional para identificar peças defeituosas em uma linha de produção.",
+        "question": "Qual cuidado técnico é necessário para confiar no sistema?",
+        "options": [
+          {
+            "text": "testar com muitos exemplos e medir erros de classificação",
+            "correct": true
+          },
+          {
+            "text": "aceitar qualquer resposta da câmera como perfeita",
+            "correct": false
+          },
+          {
+            "text": "remover iluminação e calibração dos testes",
+            "correct": false
+          },
+          {
+            "text": "usar apenas peças de uma única cor sempre",
+            "correct": false
+          }
+        ],
+        "explanation": "Sistemas de visão precisam ser testados e calibrados para reduzir erros."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de cozinha conectado a dispositivos IoT consulta uma geladeira inteligente e ajusta uma receita.",
+        "question": "Qual integração tecnológica ocorre?",
+        "options": [
+          {
+            "text": "robótica, sensores, software e dispositivos conectados",
+            "correct": true
+          },
+          {
+            "text": "apenas engrenagens sem comunicação",
+            "correct": false
+          },
+          {
+            "text": "movimento manual sem dados digitais",
+            "correct": false
+          },
+          {
+            "text": "controle mecânico sem programa",
+            "correct": false
+          }
+        ],
+        "explanation": "O exemplo integra robô, sensores, software e dispositivos conectados."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô autônomo em hospital deve priorizar segurança ao cruzar corredores com pessoas.",
+        "question": "Qual regra de decisão é mais adequada?",
+        "options": [
+          {
+            "text": "se detectar pessoa próxima, reduzir velocidade ou parar",
+            "correct": true
+          },
+          {
+            "text": "se detectar pessoa próxima, acelerar para terminar logo",
+            "correct": false
+          },
+          {
+            "text": "ignorar sensores em áreas movimentadas",
+            "correct": false
+          },
+          {
+            "text": "usar apenas a cor do piso para decidir tudo",
+            "correct": false
+          }
+        ],
+        "explanation": "Em ambientes com pessoas, a decisão deve priorizar prevenção de colisões.",
+        "figureKey": "ultrasonicObstacle"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô usado em mineração coleta dados em local de difícil acesso antes da presença humana.",
+        "question": "Qual justificativa técnica é mais forte?",
+        "options": [
+          {
+            "text": "robôs podem inspecionar ambientes perigosos e gerar dados para decisão",
+            "correct": true
+          },
+          {
+            "text": "robôs eliminam todo impacto ambiental automaticamente",
+            "correct": false
+          },
+          {
+            "text": "robôs dispensam análise humana dos dados coletados",
+            "correct": false
+          },
+          {
+            "text": "robôs funcionam melhor quando não possuem sensores",
+            "correct": false
+          }
+        ],
+        "explanation": "A robótica reduz exposição humana e fornece dados, mas não elimina análise e responsabilidade."
+      },
+      {
+        "area": "Robótica",
+        "context": "Uma equipe programa um robô com IA para adaptar sua ação. Em testes, ele acerta muito no treino, mas erra em situações novas.",
+        "question": "Qual problema isso sugere?",
+        "options": [
+          {
+            "text": "o sistema pode não generalizar bem fora dos exemplos testados",
+            "correct": true
+          },
+          {
+            "text": "o robô ficou mais inteligente por errar mais",
+            "correct": false
+          },
+          {
+            "text": "sensores não têm relação com adaptação",
+            "correct": false
+          },
+          {
+            "text": "qualquer IA funciona perfeitamente em todo ambiente",
+            "correct": false
+          }
+        ],
+        "explanation": "Bom desempenho em treino não garante generalização para cenários novos."
+      },
       {
         "area": "Português + Robótica",
         "context": "Situação-base: textos sobre a robótica do futuro indicam que a área crescerá principalmente por aplicações em indústria, saúde, logística e educação. A aparência humanoide pode chamar atenção, mas não é o fator central da expansão.",
@@ -3377,22 +4479,74 @@ function getContextHtml(q){
   if(!q.context) return '';
   return `<div class="context"><b>Contexto:</b><br>${escapeHtml(q.context)}</div>`
 }
-const ONE_POINT_QUESTION_INDEXES=[2,4,6,9,13];
-function getQuestionPoints(i){return ONE_POINT_QUESTION_INDEXES.includes(i)?1:0.5}
+function isRoboticsQuestion(q){return /robótica|programação|mecânica|computação/i.test(q.area)||/robô|sensor|drone|engren|linha|ultrass|motor|encoder|algorit|program/i.test((q.context||'')+' '+(q.question||''))}
+function inferFigureKey(q){
+  if(q.figureKey) return q.figureKey;
+  const txt=((q.context||'')+' '+(q.question||'')).toLowerCase();
+  if(txt.includes('tênis')||txt.includes('bola')||txt.includes('raquete')||txt.includes('jogador')||txt.includes('esportista')) return 'sportsRobot';
+  if(txt.includes('obra')||txt.includes('constru')||txt.includes('parede')||txt.includes('aço')||txt.includes('cimento')||txt.includes('amarrações')) return 'constructionRobot';
+  if(txt.includes('plantação')||txt.includes('agrícola')||txt.includes('lavoura')||txt.includes('drone')) return 'droneField';
+  if(txt.includes('ultrass')||txt.includes('distância')||txt.includes('obstáculo')) return 'ultrasonicObstacle';
+  if(txt.includes('linha')||txt.includes('preto')||txt.includes('sensor esquerdo')||txt.includes('sensor direito')) return 'lineFollower';
+  if(txt.includes('engren')) return 'gearTrain4';
+  if(txt.includes('câmera')||txt.includes('camera')||txt.includes('reconhece')||txt.includes('visão')) return 'cameraVision';
+  if(txt.includes('fábrica')||txt.includes('industrial')||txt.includes('esteira')||txt.includes('montagem')||txt.includes('solda')||txt.includes('braço')) return 'factoryRobot';
+  if(txt.includes('hospital')||txt.includes('cirurgia')||txt.includes('médic')||txt.includes('paciente')) return 'medicalRobot';
+  if(txt.includes('algorit')||txt.includes('program')||txt.includes('controlador')||txt.includes('condição')) return 'robotFlow';
+  return 'robotGeneric';
+}
+function miniLabelForKey(key){
+  return {
+    sportsRobot:'Robô esportista',
+    constructionRobot:'Robô em obra',
+    droneField:'Drone no campo',
+    ultrasonicObstacle:'Sensor de distância',
+    lineFollower:'Seguidor de linha',
+    gearTrain4:'Engrenagens',
+    cameraVision:'Câmera e visão',
+    factoryRobot:'Robô industrial',
+    medicalRobot:'Robô médico',
+    robotFlow:'Programa do robô',
+    robotGeneric:'Cenário robótico'
+  }[key] || 'Cenário robótico';
+}
+function renderMiniFigureByQuestion(q){
+  if(!isRoboticsQuestion(q)) return '';
+  const key=inferFigureKey(q);
+  return `<div class="mini-figure" aria-hidden="true"><div class="mini-figure-title">${miniLabelForKey(key)}</div>${renderMiniSvg(key)}</div>`
+}
+function renderMiniSvg(key){
+  const figs={
+    robotGeneric:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="46" y="18" width="68" height="40" rx="12" fill="#38bdf8"/><circle cx="68" cy="38" r="6" fill="#0f172a"/><circle cx="92" cy="38" r="6" fill="#0f172a"/><rect x="70" y="10" width="20" height="8" rx="4" fill="#f97316"/><line x1="80" y1="18" x2="80" y2="10" stroke="#e2e8f0" stroke-width="3"/><line x1="58" y1="58" x2="48" y2="82" stroke="#e2e8f0" stroke-width="5"/><line x1="102" y1="58" x2="112" y2="82" stroke="#e2e8f0" stroke-width="5"/><line x1="46" y1="44" x2="24" y2="34" stroke="#a855f7" stroke-width="5"/><line x1="114" y1="44" x2="136" y2="34" stroke="#a855f7" stroke-width="5"/><text x="20" y="28" fill="#cbd5e1" font-size="10" font-family="Arial">sensor</text><text x="118" y="28" fill="#cbd5e1" font-size="10" font-family="Arial">motor</text></svg>`,
+    lineFollower:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="160" height="100" rx="14" fill="rgba(255,255,255,.02)"/><path d="M12 84 C40 20, 98 92, 148 24" fill="none" stroke="#0f172a" stroke-width="10" stroke-linecap="round"/><rect x="42" y="22" width="52" height="26" rx="8" fill="#38bdf8"/><circle cx="56" cy="52" r="9" fill="#f97316"/><circle cx="80" cy="52" r="9" fill="#f97316"/><line x1="54" y1="58" x2="50" y2="67" stroke="#22c55e" stroke-width="4"/><line x1="78" y1="58" x2="82" y2="67" stroke="#22c55e" stroke-width="4"/><text x="14" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">linha preta</text><text x="42" y="80" fill="#cbd5e1" font-size="10" font-family="Arial">sensores olhando o chão</text></svg>`,
+    sportsRobot:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="28" r="8" fill="#facc15"/><rect x="34" y="22" width="42" height="28" rx="8" fill="#38bdf8"/><circle cx="46" cy="56" r="8" fill="#f97316"/><circle cx="64" cy="56" r="8" fill="#f97316"/><line x1="76" y1="36" x2="108" y2="44" stroke="#e2e8f0" stroke-width="4"/><circle cx="112" cy="46" r="10" fill="none" stroke="#e2e8f0" stroke-width="3"/><path d="M120 34 q10 8 8 18" fill="none" stroke="#facc15" stroke-width="3" stroke-dasharray="4 3"/><text x="14" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">bola + raquete</text><text x="88" y="80" fill="#cbd5e1" font-size="10" font-family="Arial">treino esportivo</text></svg>`,
+    constructionRobot:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="108" y="18" width="28" height="60" fill="#e2e8f0" opacity="0.9"/><rect x="34" y="54" width="40" height="18" rx="7" fill="#38bdf8"/><circle cx="42" cy="76" r="8" fill="#f97316"/><circle cx="66" cy="76" r="8" fill="#f97316"/><line x1="72" y1="60" x2="96" y2="42" stroke="#a855f7" stroke-width="5"/><line x1="96" y1="42" x2="108" y2="42" stroke="#a855f7" stroke-width="5"/><rect x="102" y="36" width="10" height="12" fill="#f97316"/><text x="10" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">robô pintando parede</text><text x="104" y="92" fill="#cbd5e1" font-size="10" font-family="Arial">obra</text></svg>`,
+    droneField:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="44" width="128" height="38" rx="8" fill="#14532d"/><g stroke="#22c55e" stroke-width="2">${[0,1,2,3].map(i=>`<line x1="${24+i*28}" y1="44" x2="${24+i*28}" y2="82"/>`).join('')}<line x1="16" y1="56" x2="144" y2="56"/><line x1="16" y1="68" x2="144" y2="68"/></g><rect x="60" y="18" width="40" height="16" rx="5" fill="#38bdf8"/><circle cx="48" cy="16" r="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><circle cx="112" cy="16" r="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><circle cx="48" cy="36" r="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><circle cx="112" cy="36" r="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><line x1="60" y1="22" x2="48" y2="16" stroke="#a855f7" stroke-width="3"/><line x1="100" y1="22" x2="112" y2="16" stroke="#a855f7" stroke-width="3"/><text x="18" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">drone mapeando plantação</text></svg>`,
+    ultrasonicObstacle:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="46" width="46" height="22" rx="8" fill="#38bdf8"/><circle cx="28" cy="58" r="6" fill="#0f172a"/><circle cx="50" cy="58" r="6" fill="#0f172a"/><rect x="122" y="24" width="16" height="54" rx="4" fill="#f97316"/><path d="M64 57 q16 -14 34 0" fill="none" stroke="#e2e8f0" stroke-width="3"/><path d="M64 57 q24 -24 50 0" fill="none" stroke="#e2e8f0" stroke-width="3" opacity="0.85"/><line x1="82" y1="22" x2="82" y2="14" stroke="#cbd5e1" stroke-width="2"/><line x1="82" y1="22" x2="122" y2="22" stroke="#cbd5e1" stroke-width="2"/><text x="74" y="12" fill="#cbd5e1" font-size="10" font-family="Arial">distância</text></svg>`,
+    gearTrain4:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="52" r="18" fill="#f97316"/><circle cx="78" cy="52" r="14" fill="#38bdf8"/><circle cx="116" cy="52" r="18" fill="#a855f7"/><g fill="#0f172a"><circle cx="38" cy="52" r="5"/><circle cx="78" cy="52" r="4"/><circle cx="116" cy="52" r="5"/></g><text x="24" y="84" fill="#cbd5e1" font-size="11" font-family="Arial">↻</text><text x="73" y="84" fill="#cbd5e1" font-size="11" font-family="Arial">↺</text><text x="111" y="84" fill="#cbd5e1" font-size="11" font-family="Arial">↻</text><text x="18" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">engrenagens trocam o sentido</text></svg>`,
+    cameraVision:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="16" y="28" width="48" height="32" rx="8" fill="#38bdf8"/><circle cx="42" cy="44" r="11" fill="#0f172a"/><circle cx="42" cy="44" r="5" fill="#e2e8f0"/><rect x="104" y="24" width="28" height="36" rx="4" fill="none" stroke="#22c55e" stroke-width="3"/><circle cx="118" cy="38" r="8" fill="#facc15"/><path d="M64 44 H96" stroke="#e2e8f0" stroke-width="4" marker-end="url(#arrowC)"/><defs><marker id="arrowC" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#e2e8f0"/></marker></defs><text x="12" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">câmera detectando objeto</text></svg>`,
+    factoryRobot:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="70" width="124" height="8" rx="4" fill="#475569"/><rect x="92" y="60" width="16" height="10" fill="#f97316"/><rect x="34" y="48" width="28" height="18" rx="6" fill="#38bdf8"/><line x1="62" y1="56" x2="88" y2="38" stroke="#a855f7" stroke-width="5"/><line x1="88" y1="38" x2="110" y2="52" stroke="#a855f7" stroke-width="5"/><circle cx="88" cy="38" r="6" fill="#e2e8f0"/><text x="12" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">braço na esteira</text><text x="92" y="92" fill="#cbd5e1" font-size="10" font-family="Arial">fábrica</text></svg>`,
+    medicalRobot:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="58" width="46" height="14" rx="6" fill="#94a3b8"/><circle cx="32" cy="54" r="7" fill="#e2e8f0"/><line x1="74" y1="54" x2="104" y2="36" stroke="#a855f7" stroke-width="5"/><line x1="104" y1="36" x2="126" y2="50" stroke="#a855f7" stroke-width="5"/><rect x="120" y="48" width="10" height="12" fill="#38bdf8"/><rect x="116" y="16" width="24" height="24" rx="6" fill="#22c55e"/><path d="M128 20 v16 M120 28 h16" stroke="#f8fafc" stroke-width="4"/><text x="14" y="18" fill="#cbd5e1" font-size="10" font-family="Arial">hospital / cirurgia</text></svg>`,
+    robotFlow:`<svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="36" width="40" height="22" rx="8" fill="#22c55e"/><rect x="60" y="22" width="40" height="22" rx="8" fill="#38bdf8"/><rect x="110" y="36" width="40" height="22" rx="8" fill="#f97316"/><path d="M50 47 H60" stroke="#e2e8f0" stroke-width="3" marker-end="url(#arf)"/><path d="M100 33 L110 44" stroke="#e2e8f0" stroke-width="3" marker-end="url(#arf)"/><defs><marker id="arf" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#e2e8f0"/></marker></defs><text x="18" y="50" fill="#0f172a" font-size="10" font-family="Arial">ler</text><text x="64" y="36" fill="#0f172a" font-size="10" font-family="Arial">pensar</text><text x="116" y="50" fill="#0f172a" font-size="10" font-family="Arial">agir</text><text x="44" y="82" fill="#cbd5e1" font-size="10" font-family="Arial">sensor → programa → motor</text></svg>`
+  };
+  return figs[key] || figs.robotGeneric;
+}
+
+function getQuestionPoints(i){return 0.5}
 function getTotalPossiblePoints(){return questions.reduce((s,_q,i)=>s+getQuestionPoints(i),0)}
 function getPointsEarned(){return studentAnswers.reduce((s,item,i)=>s+(item&&item.isCorrect?getQuestionPoints(i):0),0)}
 function getGradeNumber(){return Number(getPointsEarned().toFixed(2))}
 function getGradePercentage(){const total=getTotalPossiblePoints();return total?Math.round((getGradeNumber()/total)*100):0}
 function formatDecimal(v){return Number(v).toFixed(2).replace('.',',')}
-function getScoringRuleText(){return '5 questões valem 1,0 ponto e 10 questões valem 0,5 ponto. Total: 10 pontos.'}
+function getScoringRuleText(){return '20 questões valem 0,5 ponto cada. Total: 10 pontos.'}
 function showHome(){hero.classList.remove('hidden');footer.classList.remove('hidden');scoreElement.innerHTML='';selectedGrade=null;selectedLevel=null;questions=[];currentQuestion=0;score=0;studentAnswers=[];studentName='';resultsAlreadySent=false;app.innerHTML=`<h2 class="section-title">Escolha seu ano escolar</h2><p class="section-subtitle">Cada ano tem três níveis. As alternativas são embaralhadas a cada execução.</p><div class="grid">${gradeCard('6','6º ano','Nível 3: leitura, dados, sensores e lógica.','🤖','cyan')}${gradeCard('7','7º ano','Nível 3 mais desafiador: programação e análise.','⚙️','purple')}${gradeCard('8','8º ano','Nível 4: automação, energia, estatística e IA.','🚀','pink')}</div>`}
 function gradeCard(g,t,p,ic,c){return `<button class="card-btn" onclick="chooseGrade('${g}')"><span class="badge ${c}">Ano escolar</span><h3>${t}</h3><p>${p}</p><span class="big">${ic}</span></button>`}
-function chooseGrade(g){hero.classList.add('hidden');footer.classList.add('hidden');selectedGrade=g;scoreElement.innerHTML='';app.innerHTML=`<h2 class="section-title">${g}º ano: escolha o nível</h2><p class="section-subtitle">Questões autocontidas e inspiradas no padrão da OBR.</p><div class="grid">${levelCard('facil')}${levelCard('medio')}${levelCard('dificil')}</div><div class="btn-row"><button class="btn outline" onclick="showHome()">← Voltar</button></div>`}
+function chooseGrade(g){hero.classList.add('hidden');footer.classList.add('hidden');selectedGrade=g;scoreElement.innerHTML='';app.innerHTML=`<h2 class="section-title">${g}º ano: escolha o nível</h2><p class="section-subtitle">20 questões autocontidas, inspiradas no padrão da OBR.</p><div class="grid">${levelCard('facil')}${levelCard('medio')}${levelCard('dificil')}</div><div class="btn-row"><button class="btn outline" onclick="showHome()">← Voltar</button></div>`}
 function levelCard(l){const count=QUIZ_DATA[selectedGrade][l].length;return `<button class="card-btn" onclick="selectLevel('${l}')"><span class="badge ${LEVEL_COLORS[l]}">${LEVEL_LABELS[l]}</span><h3>${count} questões</h3><p>${l==='facil'?'Aquecimento com interpretação e cálculo.':l==='medio'?'Treino com mais etapas e atenção.':'Desafio mais pesado, no estilo da prova.'}</p><span class="big">${l==='facil'?'🟢':l==='medio'?'🟡':'🔴'}</span></button>`}
 function selectLevel(l){selectedLevel=l;questions=prepareQuestions(QUIZ_DATA[selectedGrade][selectedLevel]);currentQuestion=0;score=0;studentAnswers=[];studentName='';resultsAlreadySent=false;scoreElement.innerHTML='';renderStart()}
 function renderStart(){app.innerHTML=`<h2 class="section-title">${selectedGrade}º ano • Nível ${LEVEL_LABELS[selectedLevel]}</h2><p class="section-subtitle">Digite seu nome para iniciar.</p><label for="studentName">Nome do aluno:</label><input id="studentName" placeholder="Exemplo: Ana Silva" autocomplete="name"><div class="btn-row"><button class="btn green" onclick="startQuiz()">Começar desafio</button><button class="btn outline" onclick="chooseGrade(selectedGrade)">← Voltar aos níveis</button></div>`;setTimeout(()=>{const i=document.getElementById('studentName');if(i)i.focus()},100)}
 function startQuiz(){const input=document.getElementById('studentName');studentName=input.value.trim();if(!studentName){alert('Digite seu nome antes de começar.');input.focus();return}loadQuestion()}
-function loadQuestion(){const q=questions[currentQuestion];const prog=Math.round((currentQuestion/questions.length)*100);app.innerHTML=`<div class="meta"><span>Q${currentQuestion+1}/${questions.length}</span><span>${escapeHtml(studentName)}</span><span>${selectedGrade}º ano</span><span>${LEVEL_LABELS[selectedLevel]}</span><span>Valor: ${formatDecimal(getQuestionPoints(currentQuestion))}</span></div><div class="progress"><div style="width:${prog}%"></div></div><span class="area">${escapeHtml(q.area)}</span>${getContextHtml(q)}${q.figureKey?renderFigure(q.figureKey):''}<div class="question">${escapeHtml(q.question)}</div>${q.options.map((o,i)=>`<button class="option" onclick="selectAnswer(${i})">${escapeHtml(formatOption(i,o.text))}</button>`).join('')}<div class="feedback" id="feedback"></div><button class="btn orange hidden" id="nextBtn" onclick="nextQuestion()">Próxima questão</button>`}
+function loadQuestion(){const q=questions[currentQuestion];const prog=Math.round((currentQuestion/questions.length)*100);const roboticsThumb=renderMiniFigureByQuestion(q);app.innerHTML=`<div class="meta"><span>Q${currentQuestion+1}/${questions.length}</span><span>${escapeHtml(studentName)}</span><span>${selectedGrade}º ano</span><span>${LEVEL_LABELS[selectedLevel]}</span><span>Valor: ${formatDecimal(getQuestionPoints(currentQuestion))}</span></div><div class="progress"><div style="width:${prog}%"></div></div><span class="area">${escapeHtml(q.area)}</span>${getContextHtml(q)}${q.figureKey?renderFigure(q.figureKey):''}<div class="question-wrap">${roboticsThumb}<div class="question-text"><div class="question">${escapeHtml(q.question)}</div></div></div>${q.options.map((o,i)=>`<button class="option" onclick="selectAnswer(${i})">${escapeHtml(formatOption(i,o.text))}</button>`).join('')}<div class="feedback" id="feedback"></div><button class="btn orange hidden" id="nextBtn" onclick="nextQuestion()">Próxima questão</button>`}
 function selectAnswer(index){const q=questions[currentQuestion];const buttons=document.querySelectorAll('.option');const feedback=document.getElementById('feedback');const nextBtn=document.getElementById('nextBtn');buttons.forEach(b=>b.disabled=true);const isCorrect=index===q.answerIndex;const selectedText=formatOption(index,q.options[index].text);const correctText=formatOption(q.answerIndex,q.options[q.answerIndex].text);studentAnswers[currentQuestion]={questionNumber:currentQuestion+1,area:q.area,points:getQuestionPoints(currentQuestion),question:q.question,selectedIndex:index,selectedLetter:optionLabel(index),selectedAnswer:selectedText,correctIndex:q.answerIndex,correctLetter:optionLabel(q.answerIndex),correctAnswer:correctText,isCorrect:isCorrect};if(isCorrect){buttons[index].classList.add('correct');feedback.innerHTML='<strong>✅ Resposta correta.</strong><br><br>'+escapeHtml(q.explanation);score++}else{buttons[index].classList.add('wrong');buttons[q.answerIndex].classList.add('correct');feedback.innerHTML='<strong>❌ Resposta errada.</strong><br><br>'+escapeHtml(q.explanation)}feedback.style.display='block';nextBtn.classList.remove('hidden');const pf=document.querySelector('.progress div');if(pf)pf.style.width=Math.round(((currentQuestion+1)/questions.length)*100)+'%'}
 function nextQuestion(){currentQuestion++;if(currentQuestion<questions.length)loadQuestion();else showResults()}
 function performanceMessage(p){if(p>=85)return 'Excelente. Agora tente outro nível.';if(p>=70)return 'Bom resultado. Revise os erros.';if(p>=50)return 'Resultado intermediário. Refazer ajuda.';return 'Treine novamente: o foco é aprender com os erros.'}
