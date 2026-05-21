@@ -1,0 +1,3409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz OBR 2026 - Fundamental II</title>
+<style>
+:root {
+  --bg:#050816; --bg2:#111827; --panel:#0f172a; --panel2:#111c33; --text:#f8fafc; --muted:#cbd5e1;
+  --cyan:#38bdf8; --purple:#a855f7; --pink:#ec4899; --green:#22c55e; --orange:#f97316; --red:#ef4444; --yellow:#facc15;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:radial-gradient(circle at 10% 10%,rgba(56,189,248,.18),transparent 22%),radial-gradient(circle at 88% 14%,rgba(168,85,247,.20),transparent 24%),linear-gradient(135deg,#050816,#0f172a 55%,#1e1b4b);color:var(--text);min-height:100vh}
+.strip{height:6px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink),var(--orange),var(--green))}
+.page{min-height:100vh;display:flex;flex-direction:column}
+.hero{padding:18px 14px 8px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:38px 38px;opacity:.35}
+.hero-card{width:min(1040px,calc(100% - 20px));margin:0 auto;position:relative;border:1px solid rgba(148,163,184,.28);background:rgba(15,23,42,.82);backdrop-filter:blur(10px);border-radius:26px;padding:18px 20px;box-shadow:0 22px 50px rgba(0,0,0,.32)}
+.kicker{display:inline-flex;gap:8px;align-items:center;color:#bae6fd;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.35);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:900}
+h1{margin:10px 0 6px;font-size:clamp(30px,5vw,54px);line-height:1;letter-spacing:-1.5px;background:linear-gradient(90deg,#f8fafc,#a5f3fc,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0;color:var(--muted);font-size:clamp(14px,2vw,17px);line-height:1.45;max-width:780px}
+.main{width:min(1080px,calc(100% - 24px));margin:14px auto 28px;flex:1}
+.panel{background:rgba(15,23,42,.94);border:1px solid rgba(148,163,184,.25);border-radius:24px;box-shadow:0 18px 55px rgba(0,0,0,.35);padding:22px}
+.section-title{font-size:clamp(24px,3vw,34px);margin:0 0 6px}
+.section-subtitle{margin:0 0 20px;color:var(--muted);line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card-btn{border:1px solid rgba(148,163,184,.25);background:linear-gradient(180deg,rgba(30,41,59,.95),rgba(15,23,42,.95));color:var(--text);border-radius:22px;padding:22px;text-align:left;cursor:pointer;min-height:158px;transition:.16s ease;position:relative;overflow:hidden}
+.card-btn:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 16px 34px rgba(56,189,248,.14)}
+.badge{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin-bottom:12px}
+.badge.cyan{background:rgba(56,189,248,.16);color:#7dd3fc;border:1px solid rgba(56,189,248,.35)}.badge.purple{background:rgba(168,85,247,.16);color:#d8b4fe;border:1px solid rgba(168,85,247,.35)}.badge.pink{background:rgba(236,72,153,.16);color:#f9a8d4;border:1px solid rgba(236,72,153,.35)}.badge.green{background:rgba(34,197,94,.16);color:#86efac;border:1px solid rgba(34,197,94,.35)}.badge.yellow{background:rgba(250,204,21,.16);color:#fde68a;border:1px solid rgba(250,204,21,.35)}.badge.red{background:rgba(239,68,68,.16);color:#fca5a5;border:1px solid rgba(239,68,68,.35)}
+.card-btn h3{font-size:25px;margin:0 0 8px}.card-btn p{margin:0;color:var(--muted);line-height:1.4}.big{position:absolute;right:16px;bottom:8px;font-size:58px;opacity:.13}
+input{width:100%;border:1px solid rgba(148,163,184,.35);background:#0b1220;color:white;border-radius:14px;padding:14px 15px;font-size:16px;outline:none} input:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(56,189,248,.13)} label{display:block;font-weight:900;margin-bottom:8px}
+.btn{border:none;border-radius:14px;padding:12px 17px;background:linear-gradient(90deg,var(--cyan),var(--purple));color:white;font-weight:900;font-size:15px;cursor:pointer}.btn:hover{filter:brightness(1.07)}.btn.outline{background:transparent;border:1px solid rgba(148,163,184,.36);color:white}.btn.green{background:linear-gradient(90deg,#16a34a,#22c55e)}.btn.gray{background:#334155}.btn.orange{background:linear-gradient(90deg,#f97316,#ec4899)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.meta span{border:1px solid rgba(148,163,184,.22);background:rgba(15,23,42,.65);border-radius:999px;padding:7px 10px;font-size:13px;color:#e2e8f0;font-weight:800}
+.progress{height:10px;background:#1e293b;border-radius:999px;overflow:hidden;margin:8px 0 14px}.progress div{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink),var(--orange));transition:.2s}
+.area{display:inline-block;margin:5px 0 10px;border:1px solid rgba(249,115,22,.35);background:rgba(249,115,22,.10);color:#fed7aa;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:900}
+.context{border-left:4px solid var(--cyan);background:rgba(56,189,248,.10);border-radius:14px;padding:12px 14px;margin:8px 0 12px;color:#e2e8f0;font-size:14px;line-height:1.55;box-shadow:inset 0 0 0 1px rgba(56,189,248,.18)}
+.context b{color:#e0f2fe}
+.figure-box{margin:10px 0 14px;padding:12px;border-radius:16px;background:rgba(30,41,59,.65);border:1px solid rgba(148,163,184,.18)}
+.figure-box svg{display:block;width:100%;height:auto;max-height:260px}
+.figure-caption{margin-top:8px;font-size:12px;color:#cbd5e1;line-height:1.45}
+.question{font-size:clamp(16px,2vw,20px);line-height:1.35;font-weight:900;margin:10px 0 14px}
+.option{display:block;width:100%;margin:9px 0;padding:13px 15px;text-align:left;border-radius:14px;border:1px solid rgba(148,163,184,.24);background:#1b2638;color:#f8fafc;cursor:pointer;font-size:15px;line-height:1.35}
+.option:hover{border-color:var(--cyan);background:#233149}.option:disabled{cursor:not-allowed}.correct{background:rgba(34,197,94,.20)!important;border-color:#22c55e!important}.wrong{background:rgba(239,68,68,.20)!important;border-color:#ef4444!important}
+.feedback{display:none;margin-top:12px;padding:14px;border-radius:14px;background:rgba(15,23,42,.7);border:1px solid rgba(148,163,184,.24);color:#e2e8f0;line-height:1.45;font-size:14px}
+.score{text-align:center;font-size:clamp(22px,3vw,32px);font-weight:900;margin-top:18px}
+.results-table-wrap{overflow-x:auto;margin-top:18px}.results-table{width:100%;border-collapse:collapse;font-size:13px;background:#0f172a}.results-table th,.results-table td{border:1px solid rgba(148,163,184,.25);padding:8px;text-align:left;vertical-align:top}.results-table th{background:#1e293b}
+.chart{display:grid;grid-template-columns:190px 1fr;gap:20px;margin-top:18px;border:1px solid rgba(148,163,184,.24);background:rgba(15,23,42,.55);border-radius:18px;padding:16px;align-items:center}
+.donut{--p:0%;width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--green) var(--p),#334155 0);display:grid;place-items:center;margin:auto;position:relative}.donut:after{content:"";position:absolute;width:105px;height:105px;border-radius:50%;background:#0f172a}.donut span{position:relative;z-index:1;font-size:30px;font-weight:900}
+.bar{height:16px;background:#334155;border-radius:999px;overflow:hidden}.fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--green))}.fill.err{background:linear-gradient(90deg,var(--red),var(--orange))}.bar-label{display:flex;justify-content:space-between;gap:12px;font-weight:900;margin:8px 0 5px}
+.notice{margin-top:14px;border:1px solid rgba(34,197,94,.3);background:rgba(34,197,94,.10);border-radius:14px;padding:12px;color:#dcfce7}
+.footer{padding:24px 14px;color:#cbd5e1;text-align:center;border-top:1px solid rgba(148,163,184,.18);background:rgba(2,6,23,.75)}.footer a{color:#7dd3fc;font-weight:900;text-decoration:none}
+.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.panel{padding:16px}.chart{grid-template-columns:1fr}.btn{width:100%}.option{font-size:14px}.question{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="page"><div class="strip"></div>
+<header class="hero" id="hero"><div class="hero-card"><div class="kicker">⚡ ESC Robótica • Fundamental II • OBR 2026</div><h1>Desafio OBR</h1><p>Quiz para 6º, 7º e 8º anos com questões novas, autocontidas e inspiradas no estilo da Modalidade Teórica: interpretação, lógica, matemática, ciências, geografia, inglês e programação.</p></div></header>
+<main class="main"><div id="app" class="panel"></div><div id="score" class="score"></div></main>
+<footer class="footer" id="footer">Treino escolar inspirado na Modalidade Teórica da OBR. <a href="https://obr.robocup.org.br/modalidade-teorica/" target="_blank" rel="noopener">Ver site oficial</a></footer>
+</div><iframe name="hidden_iframe" style="display:none"></iframe>
+<script>
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkXYZ_9Lelglq-MFJrkplMW-5HbCr1yOqxUXC091aJKnWoIKQx-zdIdHs0ugrD9KGznw/exec";
+const QUIZ_DATA = {
+  "6": {
+    "facil": [
+      {
+        "area": "Português + Robótica",
+        "context": "Um robô de tênis de mesa usa câmeras, sensores e IA para observar o jogador humano. Ele não foi criado para substituir uma competição oficial, mas para treinar atletas e ajustar o nível do desafio.",
+        "question": "Qual conclusão combina melhor com a função desse robô?",
+        "options": [
+          {
+            "text": "Ele funciona como parceiro de treino adaptável.",
+            "correct": true
+          },
+          {
+            "text": "Ele joga apenas contra outros robôs.",
+            "correct": false
+          },
+          {
+            "text": "Ele dispensa sensores durante o jogo.",
+            "correct": false
+          },
+          {
+            "text": "Ele só serve para decorar o ginásio.",
+            "correct": false
+          }
+        ],
+        "explanation": "O enunciado diz que o robô observa o jogador e ajusta o desafio para treino."
+      },
+      {
+        "area": "Português",
+        "context": "Frase: “O robô observa a bola e se adapta ao movimento do atleta.”",
+        "question": "Na frase, os verbos indicam principalmente:",
+        "options": [
+          {
+            "text": "ações no presente.",
+            "correct": true
+          },
+          {
+            "text": "ações no futuro.",
+            "correct": false
+          },
+          {
+            "text": "ordens diretas.",
+            "correct": false
+          },
+          {
+            "text": "dúvidas ou hipóteses.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Observa” e “se adapta” estão no presente do indicativo."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "In a construction site, a robot paints walls and another robot ties steel bars. They help workers in repetitive and risky tasks.",
+        "question": "According to the situation, robots are useful because they:",
+        "options": [
+          {
+            "text": "help with repetitive and risky work.",
+            "correct": true
+          },
+          {
+            "text": "replace every safety rule.",
+            "correct": false
+          },
+          {
+            "text": "work only for decoration.",
+            "correct": false
+          },
+          {
+            "text": "avoid all human planning.",
+            "correct": false
+          }
+        ],
+        "explanation": "O texto destaca tarefas repetitivas e de risco."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: “Robots are assisting workers in construction.” Em português, a frase diz que robôs estão ajudando trabalhadores em obras.",
+        "question": "Nesse contexto, a palavra “assisting” tem sentido mais próximo de:",
+        "options": [
+          {
+            "text": "helping.",
+            "correct": true
+          },
+          {
+            "text": "hiding.",
+            "correct": false
+          },
+          {
+            "text": "breaking.",
+            "correct": false
+          },
+          {
+            "text": "painting.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Assisting” significa ajudar."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Uma célula usa mitocôndrias para obter energia. Um robô usa bateria para alimentar sensores, motores e controlador.",
+        "question": "Qual comparação está correta?",
+        "options": [
+          {
+            "text": "Mitocôndria e bateria se relacionam à energia.",
+            "correct": true
+          },
+          {
+            "text": "Núcleo e roda têm a mesma função.",
+            "correct": false
+          },
+          {
+            "text": "Membrana e motor produzem proteína.",
+            "correct": false
+          },
+          {
+            "text": "Ribossomo e pneu armazenam energia.",
+            "correct": false
+          }
+        ],
+        "explanation": "A comparação correta é pela função energética."
+      },
+      {
+        "area": "Ciências",
+        "context": "O ChemBot mistura vinagre com bicarbonato e registra formação de gás.",
+        "question": "Esse resultado indica transformação química porque:",
+        "options": [
+          {
+            "text": "houve formação de nova substância.",
+            "correct": true
+          },
+          {
+            "text": "a mistura apenas mudou de lugar.",
+            "correct": false
+          },
+          {
+            "text": "a cor da mesa foi alterada.",
+            "correct": false
+          },
+          {
+            "text": "o sensor desligou sozinho.",
+            "correct": false
+          }
+        ],
+        "explanation": "A formação de gás é sinal de reação química."
+      },
+      {
+        "area": "Matemática",
+        "context": "Na oficina, uma turma programou robôs por 50 minutos. Em outra etapa, programou por 90 minutos. Foram usados 30% do primeiro tempo e 40% do segundo tempo para programação.",
+        "question": "Qual foi o tempo total dedicado à programação?",
+        "options": [
+          {
+            "text": "51 minutos.",
+            "correct": true
+          },
+          {
+            "text": "42 minutos.",
+            "correct": false
+          },
+          {
+            "text": "66 minutos.",
+            "correct": false
+          },
+          {
+            "text": "75 minutos.",
+            "correct": false
+          }
+        ],
+        "explanation": "30% de 50 = 15; 40% de 90 = 36; total = 51."
+      },
+      {
+        "area": "Matemática",
+        "context": "A plataforma quadrada de um robô tinha lado de 4 m. Depois, cada lado passou para 6 m.",
+        "question": "O que aconteceu com o perímetro e com a área?",
+        "options": [
+          {
+            "text": "O perímetro aumentou 50% e a área aumentou 125%.",
+            "correct": true
+          },
+          {
+            "text": "O perímetro e a área aumentaram 50%.",
+            "correct": false
+          },
+          {
+            "text": "O perímetro aumentou 125% e a área 50%.",
+            "correct": false
+          },
+          {
+            "text": "A área diminuiu e o perímetro aumentou.",
+            "correct": false
+          }
+        ],
+        "explanation": "Perímetro: 16 para 24, aumento de 50%. Área: 16 para 36, aumento de 20 sobre 16 = 125%.",
+        "figureKey": "square4to6"
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Um drone agrícola tira imagens de uma plantação. Com sensores, ele ajuda a comparar áreas verdes e áreas com possível problema no cultivo.",
+        "question": "Essa prática está mais ligada a:",
+        "options": [
+          {
+            "text": "sensoriamento remoto.",
+            "correct": true
+          },
+          {
+            "text": "pintura manual do solo.",
+            "correct": false
+          },
+          {
+            "text": "troca de engrenagens.",
+            "correct": false
+          },
+          {
+            "text": "produção de poemas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Drones e imagens aéreas são usados em sensoriamento remoto."
+      },
+      {
+        "area": "Matemática + Computação",
+        "context": "Um robô armazena imagens de 256 KB. A memória disponível é de 1 GB. Considere 1 GB = 1.048.576 KB.",
+        "question": "Quantas imagens cabem na memória?",
+        "options": [
+          {
+            "text": "4.096 imagens.",
+            "correct": true
+          },
+          {
+            "text": "2.048 imagens.",
+            "correct": false
+          },
+          {
+            "text": "8.192 imagens.",
+            "correct": false
+          },
+          {
+            "text": "16.384 imagens.",
+            "correct": false
+          }
+        ],
+        "explanation": "1.048.576 ÷ 256 = 4.096."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "A roda de um robô tem encoder de 360 pulsos por volta. Cada volta faz o robô andar 20 cm. O robô andou 2 m.",
+        "question": "Quantos pulsos foram registrados?",
+        "options": [
+          {
+            "text": "3.600 pulsos.",
+            "correct": true
+          },
+          {
+            "text": "1.800 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "2.400 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "4.200 pulsos.",
+            "correct": false
+          }
+        ],
+        "explanation": "2 m = 200 cm; 200 ÷ 20 = 10 voltas; 10 × 360 = 3.600."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra do DanceBot: se pessoas entre 2 e 4 e luz maior que 70, dança A; se pessoas entre 2 e 4 e luz até 70, dança B; nos outros casos, dança C. Situação: 3 pessoas e luz 75.",
+        "question": "Qual passo ele fará?",
+        "options": [
+          {
+            "text": "Passo A.",
+            "correct": true
+          },
+          {
+            "text": "Passo B.",
+            "correct": false
+          },
+          {
+            "text": "Passo C.",
+            "correct": false
+          },
+          {
+            "text": "Nenhum passo.",
+            "correct": false
+          }
+        ],
+        "explanation": "3 está entre 2 e 4, e 75 é maior que 70."
+      },
+      {
+        "area": "Programação",
+        "context": "Um robô seguidor de linha usa dois sensores: esquerdo e direito. Se o sensor esquerdo vê preto, vira à esquerda. Se não, verifica o sensor direito. Se o direito vê preto, vira à direita. Se nenhum vê preto, segue em frente.",
+        "question": "Se nenhum sensor vê preto, o robô deve:",
+        "options": [
+          {
+            "text": "seguir em frente.",
+            "correct": true
+          },
+          {
+            "text": "virar à esquerda.",
+            "correct": false
+          },
+          {
+            "text": "virar à direita.",
+            "correct": false
+          },
+          {
+            "text": "dar volta completa.",
+            "correct": false
+          }
+        ],
+        "explanation": "A última condição cobre o caso em que nenhum sensor vê preto."
+      },
+      {
+        "area": "Geografia",
+        "context": "Em um mapa da escola, o robô está no ponto B2. Ele anda uma casa para leste e chega ao ponto C2.",
+        "question": "Se ele andar mais uma casa para norte, chegará em:",
+        "options": [
+          {
+            "text": "C3.",
+            "correct": true
+          },
+          {
+            "text": "B3.",
+            "correct": false
+          },
+          {
+            "text": "C1.",
+            "correct": false
+          },
+          {
+            "text": "A2.",
+            "correct": false
+          }
+        ],
+        "explanation": "De C2, uma casa para norte leva a C3.",
+        "figureKey": "gridNorth"
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Um sensor ultrassônico emite ondas e mede o retorno delas para estimar distância.",
+        "question": "Qual uso combina melhor com esse sensor?",
+        "options": [
+          {
+            "text": "detectar obstáculo sem tocar nele.",
+            "correct": true
+          },
+          {
+            "text": "guardar arquivos na memória.",
+            "correct": false
+          },
+          {
+            "text": "mostrar o mapa político.",
+            "correct": false
+          },
+          {
+            "text": "aumentar a carga da bateria.",
+            "correct": false
+          }
+        ],
+        "explanation": "O sensor ultrassônico é adequado para medir distância e detectar obstáculos."
+      }
+    ],
+    "medio": [
+      {
+        "area": "Português + Robótica",
+        "context": "Situação-base: um robô esportista acompanha a bola por câmeras, coleta dados por sensores e usa IA para ajustar o treino do jogador. Assim, ele modifica a dificuldade de acordo com o desempenho observado.",
+        "question": "Qual inferência é mais adequada?",
+        "options": [
+          {
+            "text": "O robô precisa interpretar dados para adaptar o treino.",
+            "correct": true
+          },
+          {
+            "text": "O robô joga sem sensores ou câmeras.",
+            "correct": false
+          },
+          {
+            "text": "O robô é usado somente como brinquedo.",
+            "correct": false
+          },
+          {
+            "text": "O treino ocorre sem participação humana.",
+            "correct": false
+          }
+        ],
+        "explanation": "Para adaptar o treino, o robô precisa interpretar os dados recebidos."
+      },
+      {
+        "area": "Português",
+        "context": "Trecho: “O robô analisa o adversário, calcula a resposta e ajusta sua jogada.”",
+        "question": "A sequência de verbos mostra:",
+        "options": [
+          {
+            "text": "ações organizadas em etapas.",
+            "correct": true
+          },
+          {
+            "text": "palavras sem relação entre si.",
+            "correct": false
+          },
+          {
+            "text": "uma descrição de objetos parados.",
+            "correct": false
+          },
+          {
+            "text": "apenas nomes de componentes.",
+            "correct": false
+          }
+        ],
+        "explanation": "Analisar, calcular e ajustar formam uma sequência lógica."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "A robot in a construction site drills walls, sands surfaces and carries materials. These tasks may be repetitive, heavy or unsafe for people.",
+        "question": "The best summary is:",
+        "options": [
+          {
+            "text": "robots can support safety and productivity.",
+            "correct": true
+          },
+          {
+            "text": "robots remove the need for planning.",
+            "correct": false
+          },
+          {
+            "text": "robots are used only for sports.",
+            "correct": false
+          },
+          {
+            "text": "robots work without any control.",
+            "correct": false
+          }
+        ],
+        "explanation": "O contexto fala de segurança e produtividade em obras."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: no texto sobre robôs na construção, eles assumem “repetitive tasks”, isto é, tarefas repetidas muitas vezes no trabalho.",
+        "question": "A melhor tradução de “repetitive tasks”, nesse contexto, é:",
+        "options": [
+          {
+            "text": "tarefas repetitivas.",
+            "correct": true
+          },
+          {
+            "text": "tarefas invisíveis.",
+            "correct": false
+          },
+          {
+            "text": "tarefas aleatórias.",
+            "correct": false
+          },
+          {
+            "text": "tarefas sonoras.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Repetitive tasks” significa tarefas repetitivas."
+      },
+      {
+        "area": "Ciências",
+        "context": "Um robô de laboratório aquece uma mistura e sensores registram aumento de temperatura e liberação de gás.",
+        "question": "Qual hipótese é mais adequada?",
+        "options": [
+          {
+            "text": "Pode ter ocorrido uma reação química.",
+            "correct": true
+          },
+          {
+            "text": "Sempre ocorreu apenas evaporação.",
+            "correct": false
+          },
+          {
+            "text": "O motor virou uma substância.",
+            "correct": false
+          },
+          {
+            "text": "A mistura deixou de ocupar espaço.",
+            "correct": false
+          }
+        ],
+        "explanation": "Liberação de gás e mudança de temperatura podem indicar reação química."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Em uma célula, o núcleo coordena várias atividades. Em um robô, o controlador processa leituras dos sensores e aciona motores.",
+        "question": "A melhor relação entre eles é:",
+        "options": [
+          {
+            "text": "núcleo e controlador coordenam funções.",
+            "correct": true
+          },
+          {
+            "text": "núcleo e roda reduzem atrito.",
+            "correct": false
+          },
+          {
+            "text": "membrana e motor armazenam dados.",
+            "correct": false
+          },
+          {
+            "text": "ribossomo e bateria protegem partes.",
+            "correct": false
+          }
+        ],
+        "explanation": "Ambos são associados ao controle de atividades."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um grupo programou por 40 min em uma aula e por 80 min em outra. Usou 25% da primeira aula e 50% da segunda para testar sensores.",
+        "question": "Quanto tempo foi usado em testes?",
+        "options": [
+          {
+            "text": "50 minutos.",
+            "correct": true
+          },
+          {
+            "text": "40 minutos.",
+            "correct": false
+          },
+          {
+            "text": "60 minutos.",
+            "correct": false
+          },
+          {
+            "text": "70 minutos.",
+            "correct": false
+          }
+        ],
+        "explanation": "25% de 40 = 10; 50% de 80 = 40; total = 50."
+      },
+      {
+        "area": "Matemática",
+        "context": "Uma base quadrada de lado 5 m passa a ter lado 7,5 m.",
+        "question": "Em relação ao lado inicial, a área passa de 25 m² para:",
+        "options": [
+          {
+            "text": "56,25 m².",
+            "correct": true
+          },
+          {
+            "text": "37,50 m².",
+            "correct": false
+          },
+          {
+            "text": "50,00 m².",
+            "correct": false
+          },
+          {
+            "text": "75,00 m².",
+            "correct": false
+          }
+        ],
+        "explanation": "Área do quadrado = lado²; 7,5² = 56,25."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Um drone sobrevoa uma plantação e produz um mapa com áreas mais verdes e áreas menos saudáveis.",
+        "question": "Esse mapa ajuda principalmente a:",
+        "options": [
+          {
+            "text": "planejar o manejo agrícola.",
+            "correct": true
+          },
+          {
+            "text": "trocar o idioma do robô.",
+            "correct": false
+          },
+          {
+            "text": "aumentar a tela do controle.",
+            "correct": false
+          },
+          {
+            "text": "calcular rimas de um poema.",
+            "correct": false
+          }
+        ],
+        "explanation": "O mapa da vegetação ajuda a orientar decisões no cultivo."
+      },
+      {
+        "area": "Computação",
+        "context": "Um robô captura imagens de 512 KB. Sua memória tem 2 GB. Considere 1 GB = 1.048.576 KB.",
+        "question": "Qual é o máximo de imagens armazenadas?",
+        "options": [
+          {
+            "text": "4.096 imagens.",
+            "correct": true
+          },
+          {
+            "text": "2.048 imagens.",
+            "correct": false
+          },
+          {
+            "text": "8.192 imagens.",
+            "correct": false
+          },
+          {
+            "text": "1.024 imagens.",
+            "correct": false
+          }
+        ],
+        "explanation": "2 GB = 2.097.152 KB; dividido por 512 = 4.096."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um encoder registra 180 pulsos por volta. A cada volta, o robô avança 15 cm. Em um teste, ele percorre 3 m.",
+        "question": "Quantos pulsos são registrados?",
+        "options": [
+          {
+            "text": "3.600 pulsos.",
+            "correct": true
+          },
+          {
+            "text": "1.800 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "2.700 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "4.500 pulsos.",
+            "correct": false
+          }
+        ],
+        "explanation": "3 m = 300 cm; 300 ÷ 15 = 20 voltas; 20 × 180 = 3.600."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra: se pessoas = 1, dança D. Senão, se pessoas entre 2 e 4 e luz > 70, dança A. Senão, se pessoas entre 2 e 4, dança B. Senão, dança C.",
+        "question": "Com 1 pessoa e luz 20, qual passo ocorre?",
+        "options": [
+          {
+            "text": "Passo D.",
+            "correct": true
+          },
+          {
+            "text": "Passo A.",
+            "correct": false
+          },
+          {
+            "text": "Passo B.",
+            "correct": false
+          },
+          {
+            "text": "Passo C.",
+            "correct": false
+          }
+        ],
+        "explanation": "A primeira regra atende exatamente uma pessoa, independentemente da luz."
+      },
+      {
+        "area": "Programação",
+        "context": "Um robô deve dar volta completa apenas quando os dois sensores de cor veem preto ao mesmo tempo.",
+        "question": "Qual condição representa isso?",
+        "options": [
+          {
+            "text": "esquerdo = preto E direito = preto.",
+            "correct": true
+          },
+          {
+            "text": "esquerdo = preto OU direito = branco.",
+            "correct": false
+          },
+          {
+            "text": "esquerdo = branco E direito = branco.",
+            "correct": false
+          },
+          {
+            "text": "bateria = baixa OU motor = lento.",
+            "correct": false
+          }
+        ],
+        "explanation": "A palavra E exige que as duas condições sejam verdadeiras."
+      },
+      {
+        "area": "Geografia",
+        "context": "Um robô agrícola recebeu coordenadas em uma malha. Ele sai de D4, anda duas casas para oeste e uma para sul.",
+        "question": "Qual será a posição final?",
+        "options": [
+          {
+            "text": "B3.",
+            "correct": true
+          },
+          {
+            "text": "B5.",
+            "correct": false
+          },
+          {
+            "text": "F3.",
+            "correct": false
+          },
+          {
+            "text": "D2.",
+            "correct": false
+          }
+        ],
+        "explanation": "D4 -> C4 -> B4; uma casa ao sul: B3."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô tem câmera, sensor de distância, motores e controlador. A câmera reconhece pessoas, o sensor mede obstáculos e o controlador decide a ação.",
+        "question": "Qual componente executa fisicamente o movimento?",
+        "options": [
+          {
+            "text": "motores.",
+            "correct": true
+          },
+          {
+            "text": "câmera.",
+            "correct": false
+          },
+          {
+            "text": "memória.",
+            "correct": false
+          },
+          {
+            "text": "sensor de distância.",
+            "correct": false
+          }
+        ],
+        "explanation": "Motores são responsáveis pelo movimento físico."
+      }
+    ],
+    "dificil": [
+      {
+        "area": "Português + Robótica",
+        "context": "Texto curto: Robôs esportistas ainda não substituem atletas, mas já servem para treino especializado. O FORPHEUS, por exemplo, ajusta o desafio ao estilo do jogador.",
+        "question": "Qual afirmação evita exagero e mantém a ideia central?",
+        "options": [
+          {
+            "text": "A robótica pode apoiar o treinamento humano.",
+            "correct": true
+          },
+          {
+            "text": "A robótica elimina todos os atletas.",
+            "correct": false
+          },
+          {
+            "text": "Todo robô esportista é humanoide.",
+            "correct": false
+          },
+          {
+            "text": "A IA impede qualquer adaptação.",
+            "correct": false
+          }
+        ],
+        "explanation": "A ideia central é apoio ao treino, não substituição total."
+      },
+      {
+        "area": "Português",
+        "context": "Frase: “A equipe testou o robô, analisou os dados e corrigiu o programa.”",
+        "question": "A relação entre as ações indica:",
+        "options": [
+          {
+            "text": "processo de melhoria por etapas.",
+            "correct": true
+          },
+          {
+            "text": "ordem aleatória sem objetivo.",
+            "correct": false
+          },
+          {
+            "text": "descrição de um objeto parado.",
+            "correct": false
+          },
+          {
+            "text": "ação feita antes de qualquer teste.",
+            "correct": false
+          }
+        ],
+        "explanation": "Testar, analisar e corrigir formam um ciclo de melhoria."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Context: A construction robot can drill, sand and carry materials. It is useful when a job is repetitive, physically demanding or risky.",
+        "question": "Which task best matches this use?",
+        "options": [
+          {
+            "text": "drilling many equal holes on a high wall.",
+            "correct": true
+          },
+          {
+            "text": "choosing music for a party.",
+            "correct": false
+          },
+          {
+            "text": "writing a poem about sports.",
+            "correct": false
+          },
+          {
+            "text": "painting a small paper at home.",
+            "correct": false
+          }
+        ],
+        "explanation": "A tarefa combina repetição, esforço físico e risco."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: o uso de robôs em obras busca reduzir “health risks”, como acidentes e doenças causadas por tarefas pesadas ou perigosas.",
+        "question": "No texto, a expressão “health risks” se aproxima mais de:",
+        "options": [
+          {
+            "text": "danger to workers’ bodies.",
+            "correct": true
+          },
+          {
+            "text": "fast internet access.",
+            "correct": false
+          },
+          {
+            "text": "a type of robot color.",
+            "correct": false
+          },
+          {
+            "text": "a rule for school maps.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Health risks” são riscos à saúde."
+      },
+      {
+        "area": "Ciências",
+        "context": "Um sensor registra que, depois de misturar duas substâncias, surgiram bolhas e o cheiro mudou.",
+        "question": "Qual interpretação é mais científica?",
+        "options": [
+          {
+            "text": "Há indícios de transformação química.",
+            "correct": true
+          },
+          {
+            "text": "A massa deixou de existir.",
+            "correct": false
+          },
+          {
+            "text": "A mistura virou apenas mapa.",
+            "correct": false
+          },
+          {
+            "text": "O sensor mediu uma coordenada.",
+            "correct": false
+          }
+        ],
+        "explanation": "Bolhas e mudança de cheiro podem indicar novas substâncias."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Um robô usa bateria, controlador, motores e sensores. A bateria alimenta o sistema; o controlador interpreta dados; os motores produzem movimento.",
+        "question": "Qual analogia com uma célula é mais adequada?",
+        "options": [
+          {
+            "text": "bateria: energia; controlador: coordenação.",
+            "correct": true
+          },
+          {
+            "text": "motor: produção de proteína; roda: núcleo.",
+            "correct": false
+          },
+          {
+            "text": "sensor: membrana; bateria: parede celular.",
+            "correct": false
+          },
+          {
+            "text": "carcaça: mitocôndria; motor: ribossomo.",
+            "correct": false
+          }
+        ],
+        "explanation": "A relação por função torna a analogia consistente."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um treino teve 60 min pela manhã e 75 min à tarde. Foram usados 35% da manhã e 40% da tarde para programação.",
+        "question": "Qual tempo total foi usado para programação?",
+        "options": [
+          {
+            "text": "51 minutos.",
+            "correct": true
+          },
+          {
+            "text": "45 minutos.",
+            "correct": false
+          },
+          {
+            "text": "54 minutos.",
+            "correct": false
+          },
+          {
+            "text": "60 minutos.",
+            "correct": false
+          }
+        ],
+        "explanation": "35% de 60 = 21; 40% de 75 = 30; total = 51."
+      },
+      {
+        "area": "Matemática",
+        "context": "Uma plataforma quadrada aumenta seu lado de 8 m para 12 m.",
+        "question": "Qual é o aumento percentual da área?",
+        "options": [
+          {
+            "text": "125%.",
+            "correct": true
+          },
+          {
+            "text": "50%.",
+            "correct": false
+          },
+          {
+            "text": "75%.",
+            "correct": false
+          },
+          {
+            "text": "150%.",
+            "correct": false
+          }
+        ],
+        "explanation": "Área: 64 para 144; aumento 80; 80/64 = 125%."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Um drone NIR mede respostas da vegetação invisíveis a olho nu e gera um mapa de vigor das plantas.",
+        "question": "Esse dado é útil porque permite:",
+        "options": [
+          {
+            "text": "identificar diferenças de saúde na plantação.",
+            "correct": true
+          },
+          {
+            "text": "eliminar a necessidade de solo.",
+            "correct": false
+          },
+          {
+            "text": "substituir a fotossíntese.",
+            "correct": false
+          },
+          {
+            "text": "apagar todas as coordenadas.",
+            "correct": false
+          }
+        ],
+        "explanation": "O sensoriamento ajuda a perceber variações no cultivo."
+      },
+      {
+        "area": "Computação",
+        "context": "Um robô salva fotos de 128 KB. Ele possui 512 MB livres. Considere 1 MB = 1024 KB.",
+        "question": "Quantas fotos cabem no máximo?",
+        "options": [
+          {
+            "text": "4.096 fotos.",
+            "correct": true
+          },
+          {
+            "text": "2.048 fotos.",
+            "correct": false
+          },
+          {
+            "text": "8.192 fotos.",
+            "correct": false
+          },
+          {
+            "text": "1.024 fotos.",
+            "correct": false
+          }
+        ],
+        "explanation": "512 MB = 524.288 KB; 524.288 ÷ 128 = 4.096."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um encoder gera 720 pulsos por volta. A roda avança 25 cm por volta. O robô percorreu 1,5 m.",
+        "question": "Quantos pulsos foram gerados?",
+        "options": [
+          {
+            "text": "4.320 pulsos.",
+            "correct": true
+          },
+          {
+            "text": "2.880 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "3.600 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "5.760 pulsos.",
+            "correct": false
+          }
+        ],
+        "explanation": "1,5 m = 150 cm; 150/25 = 6 voltas; 6 × 720 = 4.320."
+      },
+      {
+        "area": "Programação",
+        "context": "Código: se pessoas >= 2 e pessoas <= 4 então, se luz > 70, A; senão B; senão C. Sequência de leituras: (1,80), (3,75), (4,65), (5,90).",
+        "question": "Qual sequência de passos ocorre?",
+        "options": [
+          {
+            "text": "C, A, B, C.",
+            "correct": true
+          },
+          {
+            "text": "A, B, A, C.",
+            "correct": false
+          },
+          {
+            "text": "C, C, B, A.",
+            "correct": false
+          },
+          {
+            "text": "B, A, C, B.",
+            "correct": false
+          }
+        ],
+        "explanation": "1 e 5 pessoas caem no senão C; 3 com luz 75 dá A; 4 com luz 65 dá B."
+      },
+      {
+        "area": "Programação",
+        "context": "Um programa deve priorizar: se há exatamente 1 pessoa, passo D; caso contrário, aplicar as regras antigas para 2 a 4 pessoas e luz.",
+        "question": "Onde a nova condição deve ser testada?",
+        "options": [
+          {
+            "text": "antes das regras antigas.",
+            "correct": true
+          },
+          {
+            "text": "apenas depois do passo C.",
+            "correct": false
+          },
+          {
+            "text": "somente dentro da regra de luz.",
+            "correct": false
+          },
+          {
+            "text": "nunca, pois já existe outra condição.",
+            "correct": false
+          }
+        ],
+        "explanation": "Para garantir prioridade, o teste de 1 pessoa deve vir primeiro."
+      },
+      {
+        "area": "Geografia",
+        "context": "Um robô sai de C3, vai duas casas ao norte, uma ao leste e três ao sul.",
+        "question": "Qual é a posição final?",
+        "options": [
+          {
+            "text": "D2.",
+            "correct": true
+          },
+          {
+            "text": "B4.",
+            "correct": false
+          },
+          {
+            "text": "D6.",
+            "correct": false
+          },
+          {
+            "text": "C1.",
+            "correct": false
+          }
+        ],
+        "explanation": "C3 -> C5 -> D5 -> D2."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô seguidor de linha falha quando a luz do ambiente muda muito. O sensor de cor passa a confundir branco e preto.",
+        "question": "Qual melhoria é mais adequada?",
+        "options": [
+          {
+            "text": "calibrar o sensor nas condições reais da pista.",
+            "correct": true
+          },
+          {
+            "text": "remover todos os motores.",
+            "correct": false
+          },
+          {
+            "text": "aumentar o nome da equipe.",
+            "correct": false
+          },
+          {
+            "text": "ignorar a leitura do sensor.",
+            "correct": false
+          }
+        ],
+        "explanation": "A calibração ajusta a leitura às condições de iluminação."
+      }
+    ]
+  },
+  "7": {
+    "facil": [
+      {
+        "area": "Português + Robótica",
+        "context": "Um robô de tênis de mesa lê o estilo do jogador, calcula trajetórias e muda seu comportamento durante os ralis.",
+        "question": "A ideia de “adaptar-se” significa que o robô:",
+        "options": [
+          {
+            "text": "ajusta sua ação conforme os dados percebidos.",
+            "correct": true
+          },
+          {
+            "text": "repete sempre o mesmo movimento.",
+            "correct": false
+          },
+          {
+            "text": "joga sem observar o ambiente.",
+            "correct": false
+          },
+          {
+            "text": "desliga ao encontrar um atleta.",
+            "correct": false
+          }
+        ],
+        "explanation": "Adaptação depende de dados e ajuste de comportamento."
+      },
+      {
+        "area": "Português",
+        "context": "Frase: “A IA observa, compara e aprende com os padrões do jogador.”",
+        "question": "Os três verbos indicam:",
+        "options": [
+          {
+            "text": "ações no presente em sequência lógica.",
+            "correct": true
+          },
+          {
+            "text": "nomes de peças mecânicas.",
+            "correct": false
+          },
+          {
+            "text": "ações futuras sem relação.",
+            "correct": false
+          },
+          {
+            "text": "apenas características físicas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Os verbos estão no presente e organizam a ideia."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Construction robots can paint walls, tie steel bars and reduce accidents when tasks are repetitive or dangerous.",
+        "question": "Which statement is correct?",
+        "options": [
+          {
+            "text": "They can reduce risk in some work situations.",
+            "correct": true
+          },
+          {
+            "text": "They remove every human decision.",
+            "correct": false
+          },
+          {
+            "text": "They work only in hospitals.",
+            "correct": false
+          },
+          {
+            "text": "They cannot perform physical tasks.",
+            "correct": false
+          }
+        ],
+        "explanation": "O contexto destaca redução de acidentes em certas tarefas."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: “carrying out repetitive tasks” descreve robôs executando atividades repetidas no canteiro de obras.",
+        "question": "Nesse trecho, a expressão “carrying out” significa:",
+        "options": [
+          {
+            "text": "performing.",
+            "correct": true
+          },
+          {
+            "text": "forgetting.",
+            "correct": false
+          },
+          {
+            "text": "hiding.",
+            "correct": false
+          },
+          {
+            "text": "decorating.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Carrying out” significa executar/realizar."
+      },
+      {
+        "area": "Ciências",
+        "context": "ChemBot detecta aumento de temperatura e produção de gás após uma mistura.",
+        "question": "Qual sinal reforça a hipótese de reação química?",
+        "options": [
+          {
+            "text": "formação de gás.",
+            "correct": true
+          },
+          {
+            "text": "mudança de sala.",
+            "correct": false
+          },
+          {
+            "text": "troca de mapa.",
+            "correct": false
+          },
+          {
+            "text": "aumento do nome do arquivo.",
+            "correct": false
+          }
+        ],
+        "explanation": "Produção de gás é evidência comum de reação química."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Um robô escolar usa sensores para evitar contato direto dos alunos com uma reação que pode liberar gás.",
+        "question": "O principal benefício desse robô é:",
+        "options": [
+          {
+            "text": "aumentar a segurança no experimento.",
+            "correct": true
+          },
+          {
+            "text": "eliminar o estudo de química.",
+            "correct": false
+          },
+          {
+            "text": "fazer o gás desaparecer sempre.",
+            "correct": false
+          },
+          {
+            "text": "impedir qualquer medição.",
+            "correct": false
+          }
+        ],
+        "explanation": "O enunciado enfatiza segurança."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um robô deveria empacotar 50 produtos por hora. Em 4 horas, produziu 50, 48, 20 e 0 produtos.",
+        "question": "Em quantas horas ele cumpriu a meta?",
+        "options": [
+          {
+            "text": "1 hora.",
+            "correct": true
+          },
+          {
+            "text": "2 horas.",
+            "correct": false
+          },
+          {
+            "text": "3 horas.",
+            "correct": false
+          },
+          {
+            "text": "4 horas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Apenas a hora com 50 produtos atingiu a meta."
+      },
+      {
+        "area": "Matemática",
+        "context": "Uma turma fez 10 testes com robôs. Em 3 testes, o robô atingiu a meta.",
+        "question": "Qual fração representa os testes com meta atingida?",
+        "options": [
+          {
+            "text": "3/10.",
+            "correct": true
+          },
+          {
+            "text": "1/3.",
+            "correct": false
+          },
+          {
+            "text": "7/10.",
+            "correct": false
+          },
+          {
+            "text": "10/3.",
+            "correct": false
+          }
+        ],
+        "explanation": "Foram 3 sucessos em 10 testes."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Um drone mostra que duas partes de uma plantação têm vigor diferente, mesmo parecendo semelhantes a olho nu.",
+        "question": "Isso mostra a importância de:",
+        "options": [
+          {
+            "text": "usar imagens e dados para analisar o espaço.",
+            "correct": true
+          },
+          {
+            "text": "observar apenas de longe sem medir.",
+            "correct": false
+          },
+          {
+            "text": "pintar todas as plantas da mesma cor.",
+            "correct": false
+          },
+          {
+            "text": "ignorar diferenças entre áreas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensoriamento remoto permite análise espacial com dados."
+      },
+      {
+        "area": "Computação",
+        "context": "Cada imagem de um robô ocupa 256 KB. Ele armazenou 2.048 imagens.",
+        "question": "Quanto espaço foi usado?",
+        "options": [
+          {
+            "text": "512 MB.",
+            "correct": true
+          },
+          {
+            "text": "128 MB.",
+            "correct": false
+          },
+          {
+            "text": "256 MB.",
+            "correct": false
+          },
+          {
+            "text": "1 GB.",
+            "correct": false
+          }
+        ],
+        "explanation": "2.048 × 256 KB = 524.288 KB = 512 MB."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um encoder conta pulsos da roda para estimar distância percorrida.",
+        "question": "Para que ele é útil?",
+        "options": [
+          {
+            "text": "medir deslocamento com base nas voltas da roda.",
+            "correct": true
+          },
+          {
+            "text": "trocar a cor da pista.",
+            "correct": false
+          },
+          {
+            "text": "criar versos em inglês.",
+            "correct": false
+          },
+          {
+            "text": "substituir a bateria.",
+            "correct": false
+          }
+        ],
+        "explanation": "O encoder relaciona rotação e distância."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra: se sensor esquerdo = preto, vira à esquerda; senão se sensor direito = preto, vira à direita; senão segue.",
+        "question": "Se os dois sensores veem preto, o robô:",
+        "options": [
+          {
+            "text": "vira à esquerda.",
+            "correct": true
+          },
+          {
+            "text": "vira à direita.",
+            "correct": false
+          },
+          {
+            "text": "segue em frente.",
+            "correct": false
+          },
+          {
+            "text": "para obrigatoriamente.",
+            "correct": false
+          }
+        ],
+        "explanation": "A primeira condição verdadeira é executada antes da segunda."
+      },
+      {
+        "area": "Programação",
+        "context": "Um robô deve seguir em frente apenas quando nenhum sensor detecta preto.",
+        "question": "Qual condição representa esse caso?",
+        "options": [
+          {
+            "text": "esquerdo ≠ preto e direito ≠ preto.",
+            "correct": true
+          },
+          {
+            "text": "esquerdo = preto ou direito = preto.",
+            "correct": false
+          },
+          {
+            "text": "esquerdo = preto e direito = preto.",
+            "correct": false
+          },
+          {
+            "text": "motor = lento e bateria = cheia.",
+            "correct": false
+          }
+        ],
+        "explanation": "Nenhum sensor detecta preto quando ambos não veem preto."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor ultrassônico está na frente do robô e mede distância até objetos.",
+        "question": "Ele ajuda principalmente a:",
+        "options": [
+          {
+            "text": "evitar colisões.",
+            "correct": true
+          },
+          {
+            "text": "aumentar a memória.",
+            "correct": false
+          },
+          {
+            "text": "mudar a gramática.",
+            "correct": false
+          },
+          {
+            "text": "calcular sinônimos.",
+            "correct": false
+          }
+        ],
+        "explanation": "Medir distância ajuda a detectar obstáculos."
+      },
+      {
+        "area": "Mecânica",
+        "context": "Um conjunto de engrenagens transmite movimento do motor até a roda.",
+        "question": "Por que o programador deve conhecer esse conjunto?",
+        "options": [
+          {
+            "text": "porque ele pode alterar o sentido e o movimento da roda.",
+            "correct": true
+          },
+          {
+            "text": "porque substitui todos os sensores.",
+            "correct": false
+          },
+          {
+            "text": "porque impede qualquer cálculo.",
+            "correct": false
+          },
+          {
+            "text": "porque muda o nome do robô.",
+            "correct": false
+          }
+        ],
+        "explanation": "Engrenagens influenciam a transmissão do movimento."
+      }
+    ],
+    "medio": [
+      {
+        "area": "Português + Robótica",
+        "context": "Em uma partida de treino, o robô FORPHEUS observa velocidade, direção da bola e padrões do jogador para ajustar a devolução.",
+        "question": "A função dos sensores nesse caso é:",
+        "options": [
+          {
+            "text": "coletar dados para a decisão da IA.",
+            "correct": true
+          },
+          {
+            "text": "fazer o robô parecer humano.",
+            "correct": false
+          },
+          {
+            "text": "eliminar todos os cálculos.",
+            "correct": false
+          },
+          {
+            "text": "substituir a mesa de jogo.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensores fornecem dados usados pela IA."
+      },
+      {
+        "area": "Português",
+        "context": "Trecho: “A IA faz a leitura das habilidades do oponente e se adapta a elas com o tempo.”",
+        "question": "A expressão “com o tempo” indica:",
+        "options": [
+          {
+            "text": "processo gradual de adaptação.",
+            "correct": true
+          },
+          {
+            "text": "ação sem duração.",
+            "correct": false
+          },
+          {
+            "text": "lugar da competição.",
+            "correct": false
+          },
+          {
+            "text": "nome do sensor.",
+            "correct": false
+          }
+        ],
+        "explanation": "A expressão marca desenvolvimento ao longo do tempo."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "A robot can make 11,000 steel ties per day, while a worker makes about 6,500. It also reduces injury risk.",
+        "question": "The comparison shows that the robot:",
+        "options": [
+          {
+            "text": "can increase output and reduce risk.",
+            "correct": true
+          },
+          {
+            "text": "only changes the color of steel.",
+            "correct": false
+          },
+          {
+            "text": "works without any task.",
+            "correct": false
+          },
+          {
+            "text": "is slower in every case.",
+            "correct": false
+          }
+        ],
+        "explanation": "O texto compara produtividade e risco."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: assisting = helping; carrying out = performing; niche = a specific market area. Use essas pistas para responder.",
+        "question": "Qual grupo de sinônimos está correto?",
+        "options": [
+          {
+            "text": "helping, performing, specialized area.",
+            "correct": true
+          },
+          {
+            "text": "hiding, ignoring, open place.",
+            "correct": false
+          },
+          {
+            "text": "breaking, lifting, random idea.",
+            "correct": false
+          },
+          {
+            "text": "painting, stopping, common noise.",
+            "correct": false
+          }
+        ],
+        "explanation": "Os sinônimos preservam o sentido no contexto técnico."
+      },
+      {
+        "area": "Ciências",
+        "context": "Uma mistura em um experimento com robô gerou gás e uma substância com propriedades diferentes das iniciais.",
+        "question": "A melhor conclusão é:",
+        "options": [
+          {
+            "text": "ocorreu transformação química.",
+            "correct": true
+          },
+          {
+            "text": "ocorreu apenas deslocamento.",
+            "correct": false
+          },
+          {
+            "text": "não houve interação entre materiais.",
+            "correct": false
+          },
+          {
+            "text": "o sensor mediu só localização.",
+            "correct": false
+          }
+        ],
+        "explanation": "Novas propriedades indicam transformação química."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Um robô manipula substâncias que podem aquecer ou liberar gases. Ele fica entre o aluno e o risco direto.",
+        "question": "Esse uso se relaciona a qual princípio?",
+        "options": [
+          {
+            "text": "redução de exposição a risco.",
+            "correct": true
+          },
+          {
+            "text": "aumento do contato manual.",
+            "correct": false
+          },
+          {
+            "text": "retirada de toda medição.",
+            "correct": false
+          },
+          {
+            "text": "troca de ciência por decoração.",
+            "correct": false
+          }
+        ],
+        "explanation": "O robô reduz a exposição direta do estudante."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um robô empacotou por hora: 50, 47, 50, 20, 0, 50, 18, 48, 10, 50. A meta era 50 por hora.",
+        "question": "Qual fração das horas atingiu a meta?",
+        "options": [
+          {
+            "text": "4/10.",
+            "correct": true
+          },
+          {
+            "text": "3/10.",
+            "correct": false
+          },
+          {
+            "text": "5/10.",
+            "correct": false
+          },
+          {
+            "text": "6/10.",
+            "correct": false
+          }
+        ],
+        "explanation": "Quatro valores são iguais a 50."
+      },
+      {
+        "area": "Matemática",
+        "context": "Sempre que o robô empacota menos de 25 produtos em uma hora, passa 15 min em ajuste. Em um dia, isso ocorreu em 4 horas.",
+        "question": "Quanto tempo total ficou em ajuste?",
+        "options": [
+          {
+            "text": "60 minutos.",
+            "correct": true
+          },
+          {
+            "text": "45 minutos.",
+            "correct": false
+          },
+          {
+            "text": "75 minutos.",
+            "correct": false
+          },
+          {
+            "text": "90 minutos.",
+            "correct": false
+          }
+        ],
+        "explanation": "4 × 15 = 60."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Uma área agrícola foi dividida em norte e sul há anos. Hoje, imagens de drone ainda mostram diferença entre as partes.",
+        "question": "A leitura espacial indica que:",
+        "options": [
+          {
+            "text": "ações passadas podem deixar marcas no território.",
+            "correct": true
+          },
+          {
+            "text": "imagens não ajudam em agricultura.",
+            "correct": false
+          },
+          {
+            "text": "norte e sul não existem em mapas.",
+            "correct": false
+          },
+          {
+            "text": "drones só servem para filmagem artística.",
+            "correct": false
+          }
+        ],
+        "explanation": "O padrão espacial revela efeitos de manejo anterior."
+      },
+      {
+        "area": "Computação",
+        "context": "Um robô tem 1 GB de memória e já usou 512 MB. Cada nova imagem ocupa 256 KB.",
+        "question": "Quantas imagens novas ainda cabem?",
+        "options": [
+          {
+            "text": "2.048 imagens.",
+            "correct": true
+          },
+          {
+            "text": "1.024 imagens.",
+            "correct": false
+          },
+          {
+            "text": "4.096 imagens.",
+            "correct": false
+          },
+          {
+            "text": "8.192 imagens.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sobra 512 MB = 524.288 KB; dividido por 256 = 2.048."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "A roda avança 20 cm por volta e o encoder gera 360 pulsos. O robô registrou 1.800 pulsos.",
+        "question": "Qual distância percorreu?",
+        "options": [
+          {
+            "text": "100 cm.",
+            "correct": true
+          },
+          {
+            "text": "50 cm.",
+            "correct": false
+          },
+          {
+            "text": "150 cm.",
+            "correct": false
+          },
+          {
+            "text": "200 cm.",
+            "correct": false
+          }
+        ],
+        "explanation": "1.800/360 = 5 voltas; 5 × 20 = 100 cm."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra do DanceBot: pessoas 2 a 4 e luz > 70 => A; pessoas 2 a 4 e luz <= 70 => B; outros casos => C.",
+        "question": "Para (4 pessoas, luz 70), qual passo ocorre?",
+        "options": [
+          {
+            "text": "Passo B.",
+            "correct": true
+          },
+          {
+            "text": "Passo A.",
+            "correct": false
+          },
+          {
+            "text": "Passo C.",
+            "correct": false
+          },
+          {
+            "text": "Passo D.",
+            "correct": false
+          }
+        ],
+        "explanation": "A luz não é maior que 70; logo cai no caso B."
+      },
+      {
+        "area": "Programação",
+        "context": "Um robô deve fazer Passo D quando pessoas = 1, antes de qualquer outra decisão.",
+        "question": "Qual estrutura é mais segura?",
+        "options": [
+          {
+            "text": "testar pessoas = 1 no início.",
+            "correct": true
+          },
+          {
+            "text": "testar luz primeiro sempre.",
+            "correct": false
+          },
+          {
+            "text": "testar pessoas = 1 só no final.",
+            "correct": false
+          },
+          {
+            "text": "remover todos os senões.",
+            "correct": false
+          }
+        ],
+        "explanation": "A prioridade deve vir antes das demais condições."
+      },
+      {
+        "area": "Mecânica",
+        "context": "Um trem de engrenagens tem quatro engrenagens em sequência. Cada engrenagem inverte o sentido da próxima.",
+        "question": "Comparando a engrenagem 1 com a 4, o sentido final será:",
+        "options": [
+          {
+            "text": "oposto ao da engrenagem 1.",
+            "correct": true
+          },
+          {
+            "text": "igual em todos os casos.",
+            "correct": false
+          },
+          {
+            "text": "sem movimento.",
+            "correct": false
+          },
+          {
+            "text": "dependente da cor da roda.",
+            "correct": false
+          }
+        ],
+        "explanation": "1->2 inverte, 2->3 volta, 3->4 inverte: a 4ª fica oposta à 1ª.",
+        "figureKey": "gearTrain4"
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô possui sensor de cor e ultrassônico. Na pista, ele precisa seguir linha e evitar objeto à frente.",
+        "question": "Qual par de função está correto?",
+        "options": [
+          {
+            "text": "cor para linha; ultrassônico para distância.",
+            "correct": true
+          },
+          {
+            "text": "cor para memória; ultrassônico para gramática.",
+            "correct": false
+          },
+          {
+            "text": "cor para bateria; ultrassônico para escrita.",
+            "correct": false
+          },
+          {
+            "text": "cor para roda; ultrassônico para mapa político.",
+            "correct": false
+          }
+        ],
+        "explanation": "Cada sensor tem função compatível com seu princípio."
+      }
+    ],
+    "dificil": [
+      {
+        "area": "Português + Robótica",
+        "context": "Situação-base: o FORPHEUS usa câmeras, sensores e IA para observar o estilo de jogo do atleta humano. Em vez de substituir o jogador, ele ajusta a dificuldade do treino e atua como parceiro de prática.",
+        "question": "A melhor leitura crítica dessa situação é:",
+        "options": [
+          {
+            "text": "a tecnologia amplia o treino humano ao adaptar o desafio ao jogador.",
+            "correct": true
+          },
+          {
+            "text": "o uso de IA elimina a necessidade de atletas humanos treinarem.",
+            "correct": false
+          },
+          {
+            "text": "o objetivo principal é transformar o robô em campeão oficial.",
+            "correct": false
+          },
+          {
+            "text": "o formato do robô importa mais do que sensores e estratégia.",
+            "correct": false
+          }
+        ],
+        "explanation": "O foco é usar tecnologia para apoiar o treino humano, ajustando o nível do desafio."
+      },
+      {
+        "area": "Português",
+        "context": "Frase: “Embora o robô erre algumas jogadas, ele aprende com os dados coletados.”",
+        "question": "A palavra “Embora” introduz ideia de:",
+        "options": [
+          {
+            "text": "concessão.",
+            "correct": true
+          },
+          {
+            "text": "adição simples.",
+            "correct": false
+          },
+          {
+            "text": "tempo exato.",
+            "correct": false
+          },
+          {
+            "text": "localização.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Embora” indica contraste/concessão."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Construction robots are most useful when a task is repetitive, dangerous and physically demanding, such as drilling many holes in a high facade.",
+        "question": "Why is this example appropriate?",
+        "options": [
+          {
+            "text": "It combines repetition, risk and physical demand.",
+            "correct": true
+          },
+          {
+            "text": "It avoids every measurement.",
+            "correct": false
+          },
+          {
+            "text": "It is only a language activity.",
+            "correct": false
+          },
+          {
+            "text": "It has no relation to construction.",
+            "correct": false
+          }
+        ],
+        "explanation": "O exemplo reúne as três características do contexto."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: no texto em inglês, os robôs ajudam a reduzir a participação humana em “demanding tasks”, isto é, tarefas fisicamente difíceis ou cansativas.",
+        "question": "Nesse contexto, “demanding” significa mais propriamente:",
+        "options": [
+          {
+            "text": "requiring effort.",
+            "correct": true
+          },
+          {
+            "text": "requiring silence.",
+            "correct": false
+          },
+          {
+            "text": "requiring fiction.",
+            "correct": false
+          },
+          {
+            "text": "requiring decoration.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Demanding” indica tarefa exigente."
+      },
+      {
+        "area": "Ciências + Robótica",
+        "context": "Um robô de laboratório registrou gás, mudança de temperatura e alteração de cor em uma mistura.",
+        "question": "Qual conjunto de evidências é mais forte para reação química?",
+        "options": [
+          {
+            "text": "gás, temperatura e cor alterada.",
+            "correct": true
+          },
+          {
+            "text": "posição, legenda e mapa.",
+            "correct": false
+          },
+          {
+            "text": "roda, eixo e engrenagem.",
+            "correct": false
+          },
+          {
+            "text": "nome, turma e horário.",
+            "correct": false
+          }
+        ],
+        "explanation": "Esses sinais estão ligados a transformações da matéria."
+      },
+      {
+        "area": "Ciências",
+        "context": "Um robô coleta dados de uma reação sem que estudantes toquem nos reagentes.",
+        "question": "Além da segurança, qual vantagem científica isso traz?",
+        "options": [
+          {
+            "text": "registro mais controlado de dados.",
+            "correct": true
+          },
+          {
+            "text": "eliminação de toda observação.",
+            "correct": false
+          },
+          {
+            "text": "proibição de hipóteses.",
+            "correct": false
+          },
+          {
+            "text": "ausência de medidas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensores podem registrar dados de forma controlada."
+      },
+      {
+        "area": "Matemática",
+        "context": "Em 10 horas, um robô atingiu meta em 4 horas. Em outras 3 horas, produziu menos da metade da meta e precisou de 15 min de ajuste por hora problemática.",
+        "question": "Quanto tempo foi gasto em ajustes?",
+        "options": [
+          {
+            "text": "45 minutos.",
+            "correct": true
+          },
+          {
+            "text": "30 minutos.",
+            "correct": false
+          },
+          {
+            "text": "60 minutos.",
+            "correct": false
+          },
+          {
+            "text": "75 minutos.",
+            "correct": false
+          }
+        ],
+        "explanation": "3 ocorrências × 15 min = 45 min."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um robô produziu 50, 48, 50, 20, 0, 50, 18, 48, 10 e 50 unidades por hora. Meta: 50.",
+        "question": "Qual afirmação é correta?",
+        "options": [
+          {
+            "text": "Ele cumpriu a meta em 40% das horas.",
+            "correct": true
+          },
+          {
+            "text": "Ele cumpriu a meta em 20% das horas.",
+            "correct": false
+          },
+          {
+            "text": "Ele cumpriu a meta em 60% das horas.",
+            "correct": false
+          },
+          {
+            "text": "Ele nunca cumpriu a meta.",
+            "correct": false
+          }
+        ],
+        "explanation": "4 de 10 horas = 40%."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Um mapa NDVI mostra maior vigor vegetal no sul do campo e menor vigor no norte, apesar de ambas as áreas parecerem semelhantes no solo.",
+        "question": "Qual decisão é mais coerente?",
+        "options": [
+          {
+            "text": "investigar manejo diferente por área.",
+            "correct": true
+          },
+          {
+            "text": "ignorar a divisão espacial.",
+            "correct": false
+          },
+          {
+            "text": "usar a mesma intervenção sem análise.",
+            "correct": false
+          },
+          {
+            "text": "descartar todos os dados do drone.",
+            "correct": false
+          }
+        ],
+        "explanation": "A diferença espacial sugere manejo específico por área."
+      },
+      {
+        "area": "Computação",
+        "context": "Um robô tem 2 GB de memória. Metade já está ocupada. Cada foto NIR tem 512 KB.",
+        "question": "Quantas fotos NIR ainda cabem?",
+        "options": [
+          {
+            "text": "2.048 fotos.",
+            "correct": true
+          },
+          {
+            "text": "1.024 fotos.",
+            "correct": false
+          },
+          {
+            "text": "4.096 fotos.",
+            "correct": false
+          },
+          {
+            "text": "8.192 fotos.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sobra 1 GB = 1.048.576 KB; /512 = 2.048."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um encoder registra 360 pulsos por volta. O robô andou 2,5 m. Cada volta da roda corresponde a 25 cm.",
+        "question": "Quantos pulsos foram registrados?",
+        "options": [
+          {
+            "text": "3.600 pulsos.",
+            "correct": true
+          },
+          {
+            "text": "2.500 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "4.500 pulsos.",
+            "correct": false
+          },
+          {
+            "text": "5.000 pulsos.",
+            "correct": false
+          }
+        ],
+        "explanation": "2,5 m = 250 cm; 250/25 = 10 voltas; 10×360 = 3.600."
+      },
+      {
+        "area": "Programação",
+        "context": "Código: se pessoas >= 2 e pessoas <= 4 então se luz > 70 então A senão B; senão C. Leituras: (2,70), (4,71), (5,60).",
+        "question": "Qual sequência ocorre?",
+        "options": [
+          {
+            "text": "B, A, C.",
+            "correct": true
+          },
+          {
+            "text": "A, B, C.",
+            "correct": false
+          },
+          {
+            "text": "B, B, A.",
+            "correct": false
+          },
+          {
+            "text": "C, A, B.",
+            "correct": false
+          }
+        ],
+        "explanation": "70 não é maior que 70, então B; 71 dá A; 5 pessoas dá C."
+      },
+      {
+        "area": "Programação",
+        "context": "Um novo requisito diz: se pessoas = 1, faça D, independentemente da luz. As regras antigas continuam para os demais casos.",
+        "question": "Qual erro causaria comportamento incorreto?",
+        "options": [
+          {
+            "text": "testar luz antes de pessoas = 1.",
+            "correct": true
+          },
+          {
+            "text": "testar pessoas = 1 primeiro.",
+            "correct": false
+          },
+          {
+            "text": "manter senão para casos restantes.",
+            "correct": false
+          },
+          {
+            "text": "preservar regra de 2 a 4 pessoas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Se a luz for testada antes, uma pessoa pode cair em regra indevida."
+      },
+      {
+        "area": "Mecânica",
+        "context": "Um sistema tem engrenagens 1, 2, 3 e 4. A 1 está no motor e a 4 na roda. Cada contato entre engrenagens inverte o sentido.",
+        "question": "Para a roda girar para frente, o programador deve considerar:",
+        "options": [
+          {
+            "text": "o sentido transmitido até a engrenagem 4.",
+            "correct": true
+          },
+          {
+            "text": "apenas a cor da engrenagem 2.",
+            "correct": false
+          },
+          {
+            "text": "somente o tamanho da arena.",
+            "correct": false
+          },
+          {
+            "text": "a legenda do mapa escolar.",
+            "correct": false
+          }
+        ],
+        "explanation": "O sentido final afeta o comando dos motores."
+      },
+      {
+        "area": "Robótica",
+        "context": "Em uma pista, o robô usa cor para seguir linha e ultrassônico para evitar objetos. Quando os sensores entram em conflito, o programa prioriza parar se o obstáculo estiver perto.",
+        "question": "Essa prioridade é adequada porque:",
+        "options": [
+          {
+            "text": "evita colisão mesmo que a linha continue.",
+            "correct": true
+          },
+          {
+            "text": "aumenta o risco de choque.",
+            "correct": false
+          },
+          {
+            "text": "ignora todos os sensores.",
+            "correct": false
+          },
+          {
+            "text": "substitui a bateria por mapa.",
+            "correct": false
+          }
+        ],
+        "explanation": "Segurança normalmente deve ter prioridade sobre continuar seguindo a linha."
+      }
+    ]
+  },
+  "8": {
+    "facil": [
+      {
+        "area": "Português + Robótica",
+        "context": "O futuro da robótica não depende apenas de robôs parecidos com humanos. A tendência forte é a automação em indústria, saúde, logística, educação e pesquisa.",
+        "question": "Qual inferência é mais adequada?",
+        "options": [
+          {
+            "text": "A robótica tende a crescer em setores produtivos e sociais.",
+            "correct": true
+          },
+          {
+            "text": "A robótica só crescerá se os robôs tiverem rosto humano.",
+            "correct": false
+          },
+          {
+            "text": "Robôs serão usados apenas como brinquedos.",
+            "correct": false
+          },
+          {
+            "text": "A automação dispensa todos os profissionais.",
+            "correct": false
+          }
+        ],
+        "explanation": "O texto aponta vários setores de aplicação."
+      },
+      {
+        "area": "Português",
+        "context": "Expressão: “principais fatores que contribuem para essa demanda crescente”.",
+        "question": "Na expressão, a palavra “principais” funciona como:",
+        "options": [
+          {
+            "text": "termo que caracteriza “fatores”.",
+            "correct": true
+          },
+          {
+            "text": "verbo de ação futura.",
+            "correct": false
+          },
+          {
+            "text": "nome de um sensor.",
+            "correct": false
+          },
+          {
+            "text": "advérbio de lugar.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Principais” qualifica o substantivo fatores."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Cooking robots can chop vegetables, stir ingredients, check temperature and adjust cooking time using sensors and cameras.",
+        "question": "According to the context, sensors help the robot:",
+        "options": [
+          {
+            "text": "monitor cooking conditions.",
+            "correct": true
+          },
+          {
+            "text": "remove all ingredients.",
+            "correct": false
+          },
+          {
+            "text": "avoid every recipe.",
+            "correct": false
+          },
+          {
+            "text": "paint the kitchen wall.",
+            "correct": false
+          }
+        ],
+        "explanation": "Sensores monitoram temperatura, cor e condições do preparo."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: “Cooking robots, which use sensors, can adjust recipes.” A oração destacada explica uma característica dos robôs de cozinha.",
+        "question": "Qual pronome relativo completa corretamente a frase?",
+        "options": [
+          {
+            "text": "which.",
+            "correct": true
+          },
+          {
+            "text": "who.",
+            "correct": false
+          },
+          {
+            "text": "where.",
+            "correct": false
+          },
+          {
+            "text": "whom.",
+            "correct": false
+          }
+        ],
+        "explanation": "Para coisa/objeto, usa-se “which”."
+      },
+      {
+        "area": "Matemática",
+        "context": "Um robô cirúrgico consome 1500 W e funciona 2 h. Energia = potência em kW × tempo em horas.",
+        "question": "Qual energia ele consome nesse período?",
+        "options": [
+          {
+            "text": "3 kWh.",
+            "correct": true
+          },
+          {
+            "text": "1,5 kWh.",
+            "correct": false
+          },
+          {
+            "text": "2 kWh.",
+            "correct": false
+          },
+          {
+            "text": "4,5 kWh.",
+            "correct": false
+          }
+        ],
+        "explanation": "1500 W = 1,5 kW; 1,5 × 2 = 3 kWh."
+      },
+      {
+        "area": "Ciências",
+        "context": "Um projeto compara reprodução assexuada e sexuada usando robôs. Na assexuada, os descendentes são cópias muito semelhantes; na sexuada, há combinação de informações de dois pais.",
+        "question": "Qual vantagem da reprodução sexuada?",
+        "options": [
+          {
+            "text": "maior variabilidade genética.",
+            "correct": true
+          },
+          {
+            "text": "produção sempre idêntica.",
+            "correct": false
+          },
+          {
+            "text": "ausência total de adaptação.",
+            "correct": false
+          },
+          {
+            "text": "eliminação de descendentes.",
+            "correct": false
+          }
+        ],
+        "explanation": "A combinação de dois pais aumenta a diversidade."
+      },
+      {
+        "area": "Matemática",
+        "context": "Três placas quadradas têm lados x, 2x e 3x. A menor tem lado 2 m.",
+        "question": "Qual é a área total das três placas?",
+        "options": [
+          {
+            "text": "56 m².",
+            "correct": true
+          },
+          {
+            "text": "36 m².",
+            "correct": false
+          },
+          {
+            "text": "48 m².",
+            "correct": false
+          },
+          {
+            "text": "72 m².",
+            "correct": false
+          }
+        ],
+        "explanation": "Áreas: 4, 16 e 36; total = 56.",
+        "figureKey": "squares246"
+      },
+      {
+        "area": "Matemática + Dados",
+        "context": "Equipes públicas por cidade: 6, 8, 9, 10, 12, 15. Em uma cidade, entram mais 3 equipes públicas.",
+        "question": "O total geral de equipes públicas:",
+        "options": [
+          {
+            "text": "aumenta em 3.",
+            "correct": true
+          },
+          {
+            "text": "diminui em 3.",
+            "correct": false
+          },
+          {
+            "text": "permanece igual.",
+            "correct": false
+          },
+          {
+            "text": "fica impossível calcular.",
+            "correct": false
+          }
+        ],
+        "explanation": "Adicionar 3 equipes aumenta o total em 3."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um tanque retangular tem comprimento 2 m, largura 1 m e altura da água 0,5 m.",
+        "question": "Qual volume de água há no tanque?",
+        "options": [
+          {
+            "text": "1 m³.",
+            "correct": true
+          },
+          {
+            "text": "0,5 m³.",
+            "correct": false
+          },
+          {
+            "text": "2 m³.",
+            "correct": false
+          },
+          {
+            "text": "3,5 m³.",
+            "correct": false
+          }
+        ],
+        "explanation": "Volume = 2 × 1 × 0,5 = 1 m³."
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Drones mapeiam minas subterrâneas e robôs subaquáticos exploram áreas profundas.",
+        "question": "Esses usos se relacionam principalmente a:",
+        "options": [
+          {
+            "text": "exploração e monitoramento de recursos naturais.",
+            "correct": true
+          },
+          {
+            "text": "produção de textos literários.",
+            "correct": false
+          },
+          {
+            "text": "apenas decoração urbana.",
+            "correct": false
+          },
+          {
+            "text": "substituição de mapas por poemas.",
+            "correct": false
+          }
+        ],
+        "explanation": "Os exemplos tratam de ambientes naturais e produtivos."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de cozinha tem braços mecânicos, sensores e software. Os braços mexem utensílios; sensores medem temperatura; software decide etapas.",
+        "question": "Qual par está correto?",
+        "options": [
+          {
+            "text": "sensores medem; braços executam ações.",
+            "correct": true
+          },
+          {
+            "text": "braços interpretam textos; sensores fritam alimentos.",
+            "correct": false
+          },
+          {
+            "text": "software substitui toda energia; braços medem cor.",
+            "correct": false
+          },
+          {
+            "text": "sensores guardam pratos; software corta legumes.",
+            "correct": false
+          }
+        ],
+        "explanation": "Cada componente tem função específica."
+      },
+      {
+        "area": "Programação",
+        "context": "Um robô de cozinha segue: se temperatura < 80, aquecer; senão, mexer. A temperatura atual é 75.",
+        "question": "Qual ação será executada?",
+        "options": [
+          {
+            "text": "aquecer.",
+            "correct": true
+          },
+          {
+            "text": "mexer.",
+            "correct": false
+          },
+          {
+            "text": "desligar sempre.",
+            "correct": false
+          },
+          {
+            "text": "lavar a cozinha.",
+            "correct": false
+          }
+        ],
+        "explanation": "75 é menor que 80."
+      },
+      {
+        "area": "Ciências",
+        "context": "Um robô mede a cor de um alimento durante o cozimento. A câmera detecta escurecimento excessivo.",
+        "question": "Qual decisão seria mais adequada?",
+        "options": [
+          {
+            "text": "reduzir aquecimento ou interromper o preparo.",
+            "correct": true
+          },
+          {
+            "text": "aumentar o calor sem limite.",
+            "correct": false
+          },
+          {
+            "text": "ignorar todos os sensores.",
+            "correct": false
+          },
+          {
+            "text": "trocar a receita por mapa.",
+            "correct": false
+          }
+        ],
+        "explanation": "O sensor indica risco de passar do ponto."
+      },
+      {
+        "area": "Português",
+        "context": "",
+        "question": "Na frase “robôs industriais melhoram a eficiência”, o termo “industriais” caracteriza:",
+        "options": [
+          {
+            "text": "robôs.",
+            "correct": true
+          },
+          {
+            "text": "melhoram.",
+            "correct": false
+          },
+          {
+            "text": "eficiência.",
+            "correct": false
+          },
+          {
+            "text": "a frase inteira.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Industriais” é característica de robôs."
+      },
+      {
+        "area": "Geografia",
+        "context": "Um robô de logística organiza produtos em um armazém e reduz deslocamentos desnecessários.",
+        "question": "Essa aplicação está ligada a:",
+        "options": [
+          {
+            "text": "logística e armazenamento.",
+            "correct": true
+          },
+          {
+            "text": "polinização natural.",
+            "correct": false
+          },
+          {
+            "text": "gramática normativa.",
+            "correct": false
+          },
+          {
+            "text": "erosão costeira.",
+            "correct": false
+          }
+        ],
+        "explanation": "O contexto trata de organização e transporte em armazém."
+      }
+    ],
+    "medio": [
+      {
+        "area": "Português + Robótica",
+        "context": "Situação-base: a procura por profissionais de robótica aumenta porque a tecnologia está sendo aplicada em diferentes setores. O texto destaca automação industrial, saúde, logística, pesquisa e educação.",
+        "question": "Qual alternativa resume melhor essa ideia central?",
+        "options": [
+          {
+            "text": "A robótica cresce pela aplicação prática em vários setores.",
+            "correct": true
+          },
+          {
+            "text": "A aparência humana é o fator decisivo da robótica.",
+            "correct": false
+          },
+          {
+            "text": "A robótica ficará restrita ao entretenimento.",
+            "correct": false
+          },
+          {
+            "text": "A automação elimina todo estudo técnico.",
+            "correct": false
+          }
+        ],
+        "explanation": "O texto afirma que a robótica cresce pela aplicação concreta em vários setores."
+      },
+      {
+        "area": "Português",
+        "context": "Trecho: “demanda crescente por profissionais capacitados”.",
+        "question": "O termo “crescente” funciona como:",
+        "options": [
+          {
+            "text": "caracterizador de “demanda”.",
+            "correct": true
+          },
+          {
+            "text": "verbo principal da oração.",
+            "correct": false
+          },
+          {
+            "text": "conector de oposição.",
+            "correct": false
+          },
+          {
+            "text": "nome de equipamento.",
+            "correct": false
+          }
+        ],
+        "explanation": "“Crescente” qualifica o substantivo demanda."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Cooking robots use mechanical arms for physical actions and sensors or cameras to collect data about temperature, color and cooking conditions.",
+        "question": "Which statement is true?",
+        "options": [
+          {
+            "text": "Hardware and software work together.",
+            "correct": true
+          },
+          {
+            "text": "Only software cuts vegetables physically.",
+            "correct": false
+          },
+          {
+            "text": "Sensors remove the need for data.",
+            "correct": false
+          },
+          {
+            "text": "Mechanical arms only read recipes.",
+            "correct": false
+          }
+        ],
+        "explanation": "O contexto combina braços mecânicos, sensores e software."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: cooking robots use sensors, cameras and software. A frase deve ficar gramaticalmente correta e coerente com esse contexto.",
+        "question": "Choose the grammatically correct sentence.",
+        "options": [
+          {
+            "text": "Robots that use sensors can adjust actions.",
+            "correct": true
+          },
+          {
+            "text": "Robots where use sensors can adjust actions.",
+            "correct": false
+          },
+          {
+            "text": "Robots who use sensors can adjust actions.",
+            "correct": false
+          },
+          {
+            "text": "Robots whom use sensors can adjust actions.",
+            "correct": false
+          }
+        ],
+        "explanation": "Para objetos no plural, “that” pode introduzir a oração relativa."
+      },
+      {
+        "area": "Matemática",
+        "context": "Robô A: 1500 W por 2 h no pico a R$1,00/kWh e 2 h fora do pico a R$0,60/kWh. Considere 30 dias.",
+        "question": "Qual custo mensal do Robô A?",
+        "options": [
+          {
+            "text": "R$ 144,00.",
+            "correct": true
+          },
+          {
+            "text": "R$ 90,00.",
+            "correct": false
+          },
+          {
+            "text": "R$ 108,00.",
+            "correct": false
+          },
+          {
+            "text": "R$ 180,00.",
+            "correct": false
+          }
+        ],
+        "explanation": "1,5kW×2h×1,00=3,00/dia; 1,5kW×2h×0,60=1,80/dia; total 4,80×30=144."
+      },
+      {
+        "area": "Ciências",
+        "context": "MammalBot combina informações de dois “pais robôs”; GenClone gera cópias idênticas rapidamente.",
+        "question": "Qual relação está correta?",
+        "options": [
+          {
+            "text": "MammalBot simula reprodução sexuada com diversidade.",
+            "correct": true
+          },
+          {
+            "text": "GenClone simula maior variabilidade genética.",
+            "correct": false
+          },
+          {
+            "text": "MammalBot gera sempre cópias idênticas.",
+            "correct": false
+          },
+          {
+            "text": "Ambos impedem qualquer adaptação.",
+            "correct": false
+          }
+        ],
+        "explanation": "Combinação de dois pais representa reprodução sexuada."
+      },
+      {
+        "area": "Matemática",
+        "context": "Placas quadradas têm lados x, 2x e 3x. A soma das áreas é 224 m².",
+        "question": "Qual é o valor de x?",
+        "options": [
+          {
+            "text": "4 m.",
+            "correct": true
+          },
+          {
+            "text": "3 m.",
+            "correct": false
+          },
+          {
+            "text": "5 m.",
+            "correct": false
+          },
+          {
+            "text": "6 m.",
+            "correct": false
+          }
+        ],
+        "explanation": "x²+4x²+9x²=14x²=224; x²=16; x=4."
+      },
+      {
+        "area": "Matemática + Dados",
+        "context": "Equipes privadas por cidade: 5, 7, 9, 10, 12, 14. Em Recife, 2 equipes privadas deixam de participar, alterando um dos valores de 10 para 8.",
+        "question": "A nova lista ordenada é:",
+        "options": [
+          {
+            "text": "5, 7, 8, 9, 12, 14.",
+            "correct": true
+          },
+          {
+            "text": "5, 7, 9, 10, 12, 16.",
+            "correct": false
+          },
+          {
+            "text": "3, 5, 7, 9, 12, 14.",
+            "correct": false
+          },
+          {
+            "text": "5, 7, 9, 12, 14, 18.",
+            "correct": false
+          }
+        ],
+        "explanation": "Substitui-se 10 por 8 e ordena-se a lista."
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um tanque deve conter 1.680 litros. Considere 1.000 L = 1 m³. O comprimento é 1,75 m e a largura é 0,80 m.",
+        "question": "Qual altura da água é necessária?",
+        "options": [
+          {
+            "text": "1,2 m.",
+            "correct": true
+          },
+          {
+            "text": "1,1 m.",
+            "correct": false
+          },
+          {
+            "text": "1,25 m.",
+            "correct": false
+          },
+          {
+            "text": "1,3 m.",
+            "correct": false
+          }
+        ],
+        "explanation": "1.680 L = 1,68 m³; área da base = 1,75×0,80=1,4; altura=1,68/1,4=1,2.",
+        "figureKey": "tankHeight"
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Robôs são usados em minas, refinarias e áreas subaquáticas. Na América Latina, cobre, lítio, petróleo e biodiversidade são recursos estratégicos.",
+        "question": "Qual aplicação faz mais sentido?",
+        "options": [
+          {
+            "text": "drones para mapear minas e reduzir risco humano.",
+            "correct": true
+          },
+          {
+            "text": "robôs para apagar todos os mapas.",
+            "correct": false
+          },
+          {
+            "text": "sensores para impedir coleta de dados.",
+            "correct": false
+          },
+          {
+            "text": "atuadores para substituir leis ambientais.",
+            "correct": false
+          }
+        ],
+        "explanation": "Mapeamento autônomo pode reduzir risco em áreas de difícil acesso."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um sensor mede temperatura e uma câmera identifica a cor do alimento. O software ajusta tempo e aquecimento.",
+        "question": "Esse sistema mostra:",
+        "options": [
+          {
+            "text": "controle baseado em dados.",
+            "correct": true
+          },
+          {
+            "text": "movimento sem informação.",
+            "correct": false
+          },
+          {
+            "text": "cozimento sem sensores.",
+            "correct": false
+          },
+          {
+            "text": "programa sem decisão.",
+            "correct": false
+          }
+        ],
+        "explanation": "Dados dos sensores orientam decisões."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra: se temperatura > 100 ou cor = escura, reduzir aquecimento; senão, continuar. Leitura: temperatura 95 e cor escura.",
+        "question": "Qual ação ocorre?",
+        "options": [
+          {
+            "text": "reduzir aquecimento.",
+            "correct": true
+          },
+          {
+            "text": "continuar sem ajuste.",
+            "correct": false
+          },
+          {
+            "text": "desligar sensores.",
+            "correct": false
+          },
+          {
+            "text": "aumentar sempre.",
+            "correct": false
+          }
+        ],
+        "explanation": "A condição usa OU; cor escura já torna a condição verdadeira."
+      },
+      {
+        "area": "Ciências",
+        "context": "NeoFlora simula polinização cruzada entre plantas robóticas; GenClone simula divisão rápida e idêntica.",
+        "question": "Qual alternativa é correta?",
+        "options": [
+          {
+            "text": "NeoFlora envolve troca de material entre indivíduos.",
+            "correct": true
+          },
+          {
+            "text": "GenClone aumenta diversidade como reprodução sexuada.",
+            "correct": false
+          },
+          {
+            "text": "NeoFlora não envolve nenhum transporte.",
+            "correct": false
+          },
+          {
+            "text": "Ambos sempre geram clones idênticos.",
+            "correct": false
+          }
+        ],
+        "explanation": "Polinização cruzada envolve transporte entre plantas."
+      },
+      {
+        "area": "Português",
+        "context": "",
+        "question": "No trecho “profissionais capacitados na área”, a expressão “na área” indica:",
+        "options": [
+          {
+            "text": "campo de atuação.",
+            "correct": true
+          },
+          {
+            "text": "tempo da ação.",
+            "correct": false
+          },
+          {
+            "text": "ordem das engrenagens.",
+            "correct": false
+          },
+          {
+            "text": "modo de cozimento.",
+            "correct": false
+          }
+        ],
+        "explanation": "A expressão delimita a área profissional mencionada."
+      },
+      {
+        "area": "Geografia",
+        "context": "Um robô de logística reduz o caminho percorrido dentro de um armazém.",
+        "question": "Qual indicador poderia medir essa melhoria?",
+        "options": [
+          {
+            "text": "distância média percorrida por entrega.",
+            "correct": true
+          },
+          {
+            "text": "número de poemas gerados.",
+            "correct": false
+          },
+          {
+            "text": "cor do uniforme escolar.",
+            "correct": false
+          },
+          {
+            "text": "quantidade de verbos no texto.",
+            "correct": false
+          }
+        ],
+        "explanation": "Menor distância média indica logística mais eficiente."
+      }
+    ],
+    "dificil": [
+      {
+        "area": "Português + Robótica",
+        "context": "Situação-base: textos sobre a robótica do futuro indicam que a área crescerá principalmente por aplicações em indústria, saúde, logística e educação. A aparência humanoide pode chamar atenção, mas não é o fator central da expansão.",
+        "question": "Qual inferência é mais coerente com essa análise?",
+        "options": [
+          {
+            "text": "Formação técnica será decisiva para aproveitar a expansão da robótica.",
+            "correct": true
+          },
+          {
+            "text": "Robôs humanoides serão a única área promissora.",
+            "correct": false
+          },
+          {
+            "text": "A robótica deixará de exigir programação.",
+            "correct": false
+          },
+          {
+            "text": "A educação não terá relação com robótica.",
+            "correct": false
+          }
+        ],
+        "explanation": "Se a expansão ocorre por aplicações práticas, a formação técnica se torna decisiva."
+      },
+      {
+        "area": "Português",
+        "context": "",
+        "question": "Em “principais fatores que contribuem para essa demanda crescente”, a palavra “principais” exerce função semelhante a:",
+        "options": [
+          {
+            "text": "um adjetivo ligado ao substantivo fatores.",
+            "correct": true
+          },
+          {
+            "text": "um verbo ligado a demanda.",
+            "correct": false
+          },
+          {
+            "text": "uma conjunção adversativa.",
+            "correct": false
+          },
+          {
+            "text": "um advérbio de modo.",
+            "correct": false
+          }
+        ],
+        "explanation": "A palavra qualifica “fatores”."
+      },
+      {
+        "area": "Inglês + Robótica",
+        "context": "Cooking robots may follow recipes, learn from feedback, use sensors, connect to smart fridges and adjust recipes to dietary restrictions.",
+        "question": "Which conclusion is supported?",
+        "options": [
+          {
+            "text": "Some models can integrate sensing, learning and IoT.",
+            "correct": true
+          },
+          {
+            "text": "All models only chop vegetables manually.",
+            "correct": false
+          },
+          {
+            "text": "No model uses data from the environment.",
+            "correct": false
+          },
+          {
+            "text": "Smart devices cannot interact with robots.",
+            "correct": false
+          }
+        ],
+        "explanation": "O contexto inclui sensores, aprendizado e conexão com dispositivos."
+      },
+      {
+        "area": "Inglês",
+        "context": "Trecho-base: “Cooking robots, which use sensors and AI-enabled cameras, can adjust recipes.” A frase pede um relativo que retome “cooking robots”.",
+        "question": "Choose the correct sentence with a relative pronoun.",
+        "options": [
+          {
+            "text": "The sensors that monitor temperature guide the robot.",
+            "correct": true
+          },
+          {
+            "text": "The sensors who monitor temperature guide the robot.",
+            "correct": false
+          },
+          {
+            "text": "The sensors where monitor temperature guide the robot.",
+            "correct": false
+          },
+          {
+            "text": "The sensors whom monitor temperature guide the robot.",
+            "correct": false
+          }
+        ],
+        "explanation": "“That” pode retomar objetos/coisas."
+      },
+      {
+        "area": "Matemática",
+        "context": "Robô cirúrgico: 1500 W, 2h/dia no pico a R$1,00/kWh e 2h/dia fora do pico a R$0,60/kWh. Robô logístico: 800 W, 6h/dia fora do pico a R$0,60/kWh. Mês de 30 dias.",
+        "question": "Qual custo mensal aproximado dos dois robôs?",
+        "options": [
+          {
+            "text": "R$ 230,40.",
+            "correct": true
+          },
+          {
+            "text": "R$ 144,00.",
+            "correct": false
+          },
+          {
+            "text": "R$ 216,00.",
+            "correct": false
+          },
+          {
+            "text": "R$ 260,40.",
+            "correct": false
+          }
+        ],
+        "explanation": "Cirúrgico: R$144,00. Logístico: 0,8×6×0,60×30 = R$86,40. Total R$230,40."
+      },
+      {
+        "area": "Ciências",
+        "context": "Três robôs simulam reprodução: GenClone faz cópias idênticas; NeoFlora simula polinização cruzada; MammalBot combina dados de dois pais.",
+        "question": "Em ambiente instável, qual estratégia tende a favorecer adaptação?",
+        "options": [
+          {
+            "text": "MammalBot, por representar diversidade genética.",
+            "correct": true
+          },
+          {
+            "text": "GenClone, por produzir apenas cópias iguais.",
+            "correct": false
+          },
+          {
+            "text": "Nenhum, pois diversidade não interfere.",
+            "correct": false
+          },
+          {
+            "text": "Todos do mesmo modo, sem diferença.",
+            "correct": false
+          }
+        ],
+        "explanation": "Diversidade aumenta chance de adaptação a mudanças."
+      },
+      {
+        "area": "Matemática",
+        "context": "Placas quadradas têm lados x, 2x e 3x, com área total 224 m². Um robô percorre o contorno da maior placa.",
+        "question": "Qual é o perímetro da maior placa?",
+        "options": [
+          {
+            "text": "48 m.",
+            "correct": true
+          },
+          {
+            "text": "24 m.",
+            "correct": false
+          },
+          {
+            "text": "36 m.",
+            "correct": false
+          },
+          {
+            "text": "64 m.",
+            "correct": false
+          }
+        ],
+        "explanation": "x=4; maior lado=12; perímetro=4×12=48."
+      },
+      {
+        "area": "Estatística",
+        "context": "Equipes privadas: 5, 7, 9, 10, 12, 14. Depois, o valor 10 passa a 8.",
+        "question": "O que acontece com a mediana?",
+        "options": [
+          {
+            "text": "diminui de 9,5 para 8,5.",
+            "correct": true
+          },
+          {
+            "text": "aumenta de 9,5 para 10,5.",
+            "correct": false
+          },
+          {
+            "text": "permanece em 9,5.",
+            "correct": false
+          },
+          {
+            "text": "passa a ser 14.",
+            "correct": false
+          }
+        ],
+        "explanation": "Antes: (9+10)/2=9,5. Depois: lista 5,7,8,9,12,14; mediana=(8+9)/2=8,5.",
+        "figureKey": "medianTeams"
+      },
+      {
+        "area": "Matemática + Robótica",
+        "context": "Um tanque deve ter 1,68 m³ de água. Base: 1,75 m × 0,80 m. Se a altura for 1,0 m, faltará água.",
+        "question": "Qual volume faltará?",
+        "options": [
+          {
+            "text": "0,28 m³.",
+            "correct": true
+          },
+          {
+            "text": "0,14 m³.",
+            "correct": false
+          },
+          {
+            "text": "0,40 m³.",
+            "correct": false
+          },
+          {
+            "text": "0,68 m³.",
+            "correct": false
+          }
+        ],
+        "explanation": "Com 1,0 m: volume=1,4 m³. Faltam 1,68−1,4=0,28 m³.",
+        "figureKey": "tankMissingVolume"
+      },
+      {
+        "area": "Geografia + Robótica",
+        "context": "Drones autônomos mapeiam minas subterrâneas de cobre e lítio; robôs subaquáticos exploram áreas profundas; quadrúpedes inspecionam refinarias.",
+        "question": "Qual avaliação é mais adequada?",
+        "options": [
+          {
+            "text": "A robótica reduz exposição humana em ambientes de risco.",
+            "correct": true
+          },
+          {
+            "text": "A robótica elimina toda regulação ambiental.",
+            "correct": false
+          },
+          {
+            "text": "A exploração ocorre sem dados espaciais.",
+            "correct": false
+          },
+          {
+            "text": "Os robôs impedem qualquer monitoramento.",
+            "correct": false
+          }
+        ],
+        "explanation": "Os exemplos envolvem inspeção e exploração em locais perigosos."
+      },
+      {
+        "area": "Robótica",
+        "context": "Um robô de cozinha ajusta receita conforme restrição alimentar do usuário e dados de sensores durante o preparo.",
+        "question": "Que tipo de sistema isso representa?",
+        "options": [
+          {
+            "text": "sistema adaptativo orientado por dados.",
+            "correct": true
+          },
+          {
+            "text": "sistema fixo sem entrada externa.",
+            "correct": false
+          },
+          {
+            "text": "mecanismo puramente decorativo.",
+            "correct": false
+          },
+          {
+            "text": "atuador sem software.",
+            "correct": false
+          }
+        ],
+        "explanation": "Há adaptação com base em dados e preferências."
+      },
+      {
+        "area": "Programação",
+        "context": "Regra: se alergia = verdadeiro, substituir ingrediente; senão se temperatura > limite, reduzir calor; senão continuar. Situação: alergia verdadeira e temperatura alta.",
+        "question": "Qual ação tem prioridade?",
+        "options": [
+          {
+            "text": "substituir ingrediente.",
+            "correct": true
+          },
+          {
+            "text": "reduzir calor primeiro.",
+            "correct": false
+          },
+          {
+            "text": "continuar sem ajuste.",
+            "correct": false
+          },
+          {
+            "text": "desligar todos os sensores.",
+            "correct": false
+          }
+        ],
+        "explanation": "A primeira condição verdadeira é a de alergia."
+      },
+      {
+        "area": "Ciências",
+        "context": "Na reprodução assexuada, cópias rápidas podem ser vantajosas em ambiente estável. Na sexuada, maior variabilidade pode ajudar em ambiente variável.",
+        "question": "Qual comparação está correta?",
+        "options": [
+          {
+            "text": "assexuada favorece rapidez; sexuada favorece diversidade.",
+            "correct": true
+          },
+          {
+            "text": "assexuada sempre gera mais diversidade.",
+            "correct": false
+          },
+          {
+            "text": "sexuada gera cópias idênticas.",
+            "correct": false
+          },
+          {
+            "text": "as duas nunca têm vantagem.",
+            "correct": false
+          }
+        ],
+        "explanation": "Cada estratégia tem vantagem em contextos diferentes."
+      },
+      {
+        "area": "Português",
+        "context": "Frase: “Robôs industriais melhoram a eficiência e reduzem custos.”",
+        "question": "A expressão “industriais” tem papel de:",
+        "options": [
+          {
+            "text": "adjunto adnominal ligado a robôs.",
+            "correct": true
+          },
+          {
+            "text": "verbo de ligação.",
+            "correct": false
+          },
+          {
+            "text": "objeto direto de reduzem.",
+            "correct": false
+          },
+          {
+            "text": "advérbio de intensidade.",
+            "correct": false
+          }
+        ],
+        "explanation": "O termo qualifica o substantivo “robôs”."
+      },
+      {
+        "area": "Geografia + Dados",
+        "context": "Um armazém usa robô de logística. Antes, cada entrega percorria 120 m em média; depois, 84 m.",
+        "question": "Qual foi a redução percentual da distância média?",
+        "options": [
+          {
+            "text": "30%.",
+            "correct": true
+          },
+          {
+            "text": "20%.",
+            "correct": false
+          },
+          {
+            "text": "25%.",
+            "correct": false
+          },
+          {
+            "text": "40%.",
+            "correct": false
+          }
+        ],
+        "explanation": "Redução: 36 m; 36/120 = 0,30 = 30%."
+      }
+    ]
+  }
+}
+const LEVEL_LABELS = {facil:"Fácil", medio:"Médio", dificil:"Difícil"};
+const LEVEL_COLORS = {facil:"green", medio:"yellow", dificil:"red"};
+let selectedGrade=null, selectedLevel=null, questions=[], currentQuestion=0, score=0, studentName="", studentAnswers=[], resultsAlreadySent=false;
+const app=document.getElementById('app'), scoreElement=document.getElementById('score'), hero=document.getElementById('hero'), footer=document.getElementById('footer');
+function escapeHtml(s){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+function optionLabel(i){return String.fromCharCode(65+i)}
+function formatOption(i,t){return optionLabel(i)+') '+t}
+function permute(list,p){return p.map(i=>list[i])}
+function allPermutations(list){if(list.length<=1)return [list];const out=[];for(let i=0;i<list.length;i++){const rest=[...list.slice(0,i),...list.slice(i+1)];for(const p of allPermutations(rest)){out.push([list[i],...p])}}return out}
+const OPTION_PERMUTATIONS=allPermutations([0,1,2,3]).filter(p=>!p.every((v,i)=>v===i));
+function shuffleOptionsWithVariation(options){
+  const original=options.map((o,idx)=>({...o,_originalIndex:idx}));
+  let candidates=OPTION_PERMUTATIONS.map(p=>permute(original,p)).filter(sh=>!sh.every((o,i)=>o._originalIndex===i));
+  candidates=candidates.filter(sh=>sh.findIndex(o=>o.correct)!==0) || candidates;
+  let chosen=candidates[Math.floor(Math.random()*candidates.length)] || [...original].reverse();
+  if(chosen.findIndex(o=>o.correct)===0){const swapIndex=1+Math.floor(Math.random()*(chosen.length-1));[chosen[0],chosen[swapIndex]]=[chosen[swapIndex],chosen[0]]}
+  return chosen.map(({_originalIndex,...rest})=>rest)
+}
+function prepareQuestions(raw){
+  return raw.map((q,idx)=>{
+    const opts=shuffleOptionsWithVariation(q.options);
+    return {...q, options:opts, answerIndex:opts.findIndex(o=>o.correct), _qid:`${selectedGrade}-${selectedLevel}-${idx}-${Date.now()}-${Math.random().toString(36).slice(2,8)}`}
+  })
+}
+function renderFigure(key){
+  const figures={
+    square4to6:`<div class="figure-box"><svg viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="50" width="80" height="80" rx="6" fill="#38bdf8" opacity="0.85"/><text x="70" y="145" text-anchor="middle" fill="#e2e8f0" font-size="15" font-family="Arial">lado 4 m</text><rect x="220" y="30" width="120" height="120" rx="6" fill="#f97316" opacity="0.85"/><text x="280" y="165" text-anchor="middle" fill="#e2e8f0" font-size="15" font-family="Arial">lado 6 m</text><text x="145" y="95" fill="#f8fafc" font-size="22" font-family="Arial">→</text></svg><div class="figure-caption">A figura compara um quadrado de lado 4 m com outro de lado 6 m.</div></div>`,
+    gridNorth:`<div class="figure-box"><svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"><g font-family="Arial" font-size="14" fill="#e2e8f0">${['A','B','C'].map((l,i)=>`<text x="${72+i*64}" y="26">${l}</text>`).join('')}${[1,2,3].map((n,i)=>`<text x="26" y="${170-i*64}">${n}</text>`).join('')}</g>${[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${50+c*64}" y="${42+r*64}" width="56" height="56" rx="6" fill="${(c===1&&r===1)?'#38bdf8':(c===2&&r===1)?'#f97316':(c===2&&r===0)?'#22c55e':'#1e293b'}" stroke="#94a3b8"/>`).join('')).join('')}<path d="M132 126 L182 126" stroke="#f8fafc" stroke-width="4" marker-end="url(#a)"/><path d="M210 120 L210 74" stroke="#f8fafc" stroke-width="4" marker-end="url(#a)"/><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#f8fafc"/></marker></defs><text x="78" y="76" fill="#0f172a" font-size="16" font-family="Arial">A3</text><text x="142" y="140" fill="#0f172a" font-size="16" font-family="Arial">B2</text><text x="206" y="140" fill="#0f172a" font-size="16" font-family="Arial">C2</text><text x="206" y="76" fill="#0f172a" font-size="16" font-family="Arial">C3</text></svg><div class="figure-caption">B2 → C2 (leste) e depois C2 → C3 (norte).</div></div>`,
+    gearTrain4:`<div class="figure-box"><svg viewBox="0 0 430 180" xmlns="http://www.w3.org/2000/svg"><g font-family="Arial" font-size="14"><circle cx="70" cy="90" r="28" fill="#38bdf8"/><circle cx="160" cy="90" r="28" fill="#f97316"/><circle cx="250" cy="90" r="28" fill="#22c55e"/><circle cx="340" cy="90" r="28" fill="#a855f7"/><text x="64" y="95" fill="#0f172a">1</text><text x="154" y="95" fill="#0f172a">2</text><text x="244" y="95" fill="#0f172a">3</text><text x="334" y="95" fill="#0f172a">4</text><text x="55" y="150" fill="#e2e8f0">↻</text><text x="145" y="150" fill="#e2e8f0">↺</text><text x="235" y="150" fill="#e2e8f0">↻</text><text x="325" y="150" fill="#e2e8f0">↺</text></g></svg><div class="figure-caption">Cada engrenagem encostada na próxima inverte o sentido de rotação.</div></div>`,
+    squares246:`<div class="figure-box"><svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="118" width="40" height="40" fill="#38bdf8" opacity="0.9"/><rect x="110" y="78" width="80" height="80" fill="#a855f7" opacity="0.85"/><rect x="250" y="38" width="120" height="120" fill="#f97316" opacity="0.85"/><g fill="#e2e8f0" font-family="Arial" font-size="15"><text x="20" y="176">lado 2 m</text><text x="112" y="176">lado 4 m</text><text x="252" y="176">lado 6 m</text></g></svg><div class="figure-caption">As placas quadradas têm lados 2 m, 4 m e 6 m.</div></div>`,
+    tankHeight:`<div class="figure-box"><svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg"><rect x="120" y="30" width="180" height="150" rx="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><rect x="123" y="88" width="174" height="89" fill="#38bdf8" opacity="0.55"/><text x="185" y="22" fill="#e2e8f0" font-size="14" font-family="Arial">comprimento 1,75 m</text><text x="18" y="118" fill="#e2e8f0" font-size="14" font-family="Arial">altura = ?</text><text x="300" y="118" fill="#e2e8f0" font-size="14" font-family="Arial">largura 0,80 m</text><text x="145" y="202" fill="#cbd5e1" font-size="13" font-family="Arial">volume desejado: 1,68 m³</text></svg><div class="figure-caption">O volume do tanque é base × altura.</div></div>`,
+    medianTeams:`<div class="figure-box"><svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg"><g fill="#e2e8f0" font-family="Arial" font-size="14"><text x="18" y="30">Antes</text><text x="18" y="126">Depois</text></g><line x1="70" y1="50" x2="420" y2="50" stroke="#94a3b8" stroke-width="2"/><line x1="70" y1="146" x2="420" y2="146" stroke="#94a3b8" stroke-width="2"/>${[5,7,9,10,12,14].map((v,i)=>`<circle cx="${90+i*56}" cy="50" r="8" fill="${(v===9||v===10)?'#f97316':'#38bdf8'}"/><text x="${82+i*56}" y="78" fill="#e2e8f0" font-size="13" font-family="Arial">${v}</text>`).join('')}${[5,7,8,9,12,14].map((v,i)=>`<circle cx="${90+i*56}" cy="146" r="8" fill="${(v===8||v===9)?'#22c55e':'#38bdf8'}"/><text x="${82+i*56}" y="174" fill="#e2e8f0" font-size="13" font-family="Arial">${v}</text>`).join('')}<text x="196" y="100" fill="#f97316" font-size="13" font-family="Arial">mediana: (9 + 10)/2 = 9,5</text><text x="196" y="196" fill="#22c55e" font-size="13" font-family="Arial">mediana: (8 + 9)/2 = 8,5</text></svg><div class="figure-caption">Em listas com 6 valores, a mediana é a média entre o 3º e o 4º termos.</div></div>`,
+    tankMissingVolume:`<div class="figure-box"><svg viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg"><rect x="110" y="30" width="190" height="150" rx="8" fill="none" stroke="#e2e8f0" stroke-width="3"/><rect x="113" y="72" width="184" height="105" fill="#38bdf8" opacity="0.55"/><line x1="110" y1="72" x2="300" y2="72" stroke="#f8fafc" stroke-dasharray="6 6"/><text x="315" y="76" fill="#e2e8f0" font-size="14" font-family="Arial">1,0 m</text><text x="122" y="202" fill="#cbd5e1" font-size="13" font-family="Arial">volume com 1,0 m: 1,4 m³</text><text x="122" y="26" fill="#cbd5e1" font-size="13" font-family="Arial">objetivo: 1,68 m³</text></svg><div class="figure-caption">Compare o volume atual (1,4 m³) com o volume desejado (1,68 m³).</div></div>`
+  };
+  return figures[key] || '';
+}
+function getContextHtml(q){
+  if(!q.context) return '';
+  return `<div class="context"><b>Contexto:</b><br>${escapeHtml(q.context)}</div>`
+}
+const ONE_POINT_QUESTION_INDEXES=[2,4,6,9,13];
+function getQuestionPoints(i){return ONE_POINT_QUESTION_INDEXES.includes(i)?1:0.5}
+function getTotalPossiblePoints(){return questions.reduce((s,_q,i)=>s+getQuestionPoints(i),0)}
+function getPointsEarned(){return studentAnswers.reduce((s,item,i)=>s+(item&&item.isCorrect?getQuestionPoints(i):0),0)}
+function getGradeNumber(){return Number(getPointsEarned().toFixed(2))}
+function getGradePercentage(){const total=getTotalPossiblePoints();return total?Math.round((getGradeNumber()/total)*100):0}
+function formatDecimal(v){return Number(v).toFixed(2).replace('.',',')}
+function getScoringRuleText(){return '5 questões valem 1,0 ponto e 10 questões valem 0,5 ponto. Total: 10 pontos.'}
+function showHome(){hero.classList.remove('hidden');footer.classList.remove('hidden');scoreElement.innerHTML='';selectedGrade=null;selectedLevel=null;questions=[];currentQuestion=0;score=0;studentAnswers=[];studentName='';resultsAlreadySent=false;app.innerHTML=`<h2 class="section-title">Escolha seu ano escolar</h2><p class="section-subtitle">Cada ano tem três níveis. As alternativas são embaralhadas a cada execução.</p><div class="grid">${gradeCard('6','6º ano','Nível 3: leitura, dados, sensores e lógica.','🤖','cyan')}${gradeCard('7','7º ano','Nível 3 mais desafiador: programação e análise.','⚙️','purple')}${gradeCard('8','8º ano','Nível 4: automação, energia, estatística e IA.','🚀','pink')}</div>`}
+function gradeCard(g,t,p,ic,c){return `<button class="card-btn" onclick="chooseGrade('${g}')"><span class="badge ${c}">Ano escolar</span><h3>${t}</h3><p>${p}</p><span class="big">${ic}</span></button>`}
+function chooseGrade(g){hero.classList.add('hidden');footer.classList.add('hidden');selectedGrade=g;scoreElement.innerHTML='';app.innerHTML=`<h2 class="section-title">${g}º ano: escolha o nível</h2><p class="section-subtitle">Questões autocontidas e inspiradas no padrão da OBR.</p><div class="grid">${levelCard('facil')}${levelCard('medio')}${levelCard('dificil')}</div><div class="btn-row"><button class="btn outline" onclick="showHome()">← Voltar</button></div>`}
+function levelCard(l){const count=QUIZ_DATA[selectedGrade][l].length;return `<button class="card-btn" onclick="selectLevel('${l}')"><span class="badge ${LEVEL_COLORS[l]}">${LEVEL_LABELS[l]}</span><h3>${count} questões</h3><p>${l==='facil'?'Aquecimento com interpretação e cálculo.':l==='medio'?'Treino com mais etapas e atenção.':'Desafio mais pesado, no estilo da prova.'}</p><span class="big">${l==='facil'?'🟢':l==='medio'?'🟡':'🔴'}</span></button>`}
+function selectLevel(l){selectedLevel=l;questions=prepareQuestions(QUIZ_DATA[selectedGrade][selectedLevel]);currentQuestion=0;score=0;studentAnswers=[];studentName='';resultsAlreadySent=false;scoreElement.innerHTML='';renderStart()}
+function renderStart(){app.innerHTML=`<h2 class="section-title">${selectedGrade}º ano • Nível ${LEVEL_LABELS[selectedLevel]}</h2><p class="section-subtitle">Digite seu nome para iniciar.</p><label for="studentName">Nome do aluno:</label><input id="studentName" placeholder="Exemplo: Ana Silva" autocomplete="name"><div class="btn-row"><button class="btn green" onclick="startQuiz()">Começar desafio</button><button class="btn outline" onclick="chooseGrade(selectedGrade)">← Voltar aos níveis</button></div>`;setTimeout(()=>{const i=document.getElementById('studentName');if(i)i.focus()},100)}
+function startQuiz(){const input=document.getElementById('studentName');studentName=input.value.trim();if(!studentName){alert('Digite seu nome antes de começar.');input.focus();return}loadQuestion()}
+function loadQuestion(){const q=questions[currentQuestion];const prog=Math.round((currentQuestion/questions.length)*100);app.innerHTML=`<div class="meta"><span>Q${currentQuestion+1}/${questions.length}</span><span>${escapeHtml(studentName)}</span><span>${selectedGrade}º ano</span><span>${LEVEL_LABELS[selectedLevel]}</span><span>Valor: ${formatDecimal(getQuestionPoints(currentQuestion))}</span></div><div class="progress"><div style="width:${prog}%"></div></div><span class="area">${escapeHtml(q.area)}</span>${getContextHtml(q)}${q.figureKey?renderFigure(q.figureKey):''}<div class="question">${escapeHtml(q.question)}</div>${q.options.map((o,i)=>`<button class="option" onclick="selectAnswer(${i})">${escapeHtml(formatOption(i,o.text))}</button>`).join('')}<div class="feedback" id="feedback"></div><button class="btn orange hidden" id="nextBtn" onclick="nextQuestion()">Próxima questão</button>`}
+function selectAnswer(index){const q=questions[currentQuestion];const buttons=document.querySelectorAll('.option');const feedback=document.getElementById('feedback');const nextBtn=document.getElementById('nextBtn');buttons.forEach(b=>b.disabled=true);const isCorrect=index===q.answerIndex;const selectedText=formatOption(index,q.options[index].text);const correctText=formatOption(q.answerIndex,q.options[q.answerIndex].text);studentAnswers[currentQuestion]={questionNumber:currentQuestion+1,area:q.area,points:getQuestionPoints(currentQuestion),question:q.question,selectedIndex:index,selectedLetter:optionLabel(index),selectedAnswer:selectedText,correctIndex:q.answerIndex,correctLetter:optionLabel(q.answerIndex),correctAnswer:correctText,isCorrect:isCorrect};if(isCorrect){buttons[index].classList.add('correct');feedback.innerHTML='<strong>✅ Resposta correta.</strong><br><br>'+escapeHtml(q.explanation);score++}else{buttons[index].classList.add('wrong');buttons[q.answerIndex].classList.add('correct');feedback.innerHTML='<strong>❌ Resposta errada.</strong><br><br>'+escapeHtml(q.explanation)}feedback.style.display='block';nextBtn.classList.remove('hidden');const pf=document.querySelector('.progress div');if(pf)pf.style.width=Math.round(((currentQuestion+1)/questions.length)*100)+'%'}
+function nextQuestion(){currentQuestion++;if(currentQuestion<questions.length)loadQuestion();else showResults()}
+function performanceMessage(p){if(p>=85)return 'Excelente. Agora tente outro nível.';if(p>=70)return 'Bom resultado. Revise os erros.';if(p>=50)return 'Resultado intermediário. Refazer ajuda.';return 'Treine novamente: o foco é aprender com os erros.'}
+function renderChart(p){const wrong=questions.length-score;const acc=Math.round((score/questions.length)*100);const err=100-acc;return `<div class="chart"><div class="donut" style="--p:${p}%"><span>${p}%</span></div><div><div class="bar-label"><span>Nota</span><span>${formatDecimal(getGradeNumber())} / ${formatDecimal(getTotalPossiblePoints())}</span></div><div class="bar"><div class="fill" style="width:${p}%"></div></div><div class="bar-label"><span>Acertos</span><span>${score}/${questions.length}</span></div><div class="bar"><div class="fill" style="width:${acc}%"></div></div><div class="bar-label"><span>Erros</span><span>${wrong}/${questions.length}</span></div><div class="bar"><div class="fill err" style="width:${err}%"></div></div><p>${performanceMessage(p)}</p></div></div>`}
+function showResults(){const perc=getGradePercentage();const accPerc=Math.round((score/questions.length)*100);scoreElement.innerHTML=`🎯 ${escapeHtml(studentName)}: ${formatDecimal(getGradeNumber())} / ${formatDecimal(getTotalPossiblePoints())}`;const rows=studentAnswers.map(i=>`<tr><td>${i.questionNumber}</td><td>${escapeHtml(i.area)}</td><td>${formatDecimal(i.points)}</td><td>${escapeHtml(i.selectedAnswer)}</td><td>${escapeHtml(i.correctAnswer)}</td><td>${i.isCorrect?'Correta':'Errada'}</td></tr>`).join('');app.innerHTML=`<h2 class="section-title">Resultado do desafio</h2><p class="section-subtitle">Confira o desempenho e envie para a planilha do professor.</p><div class="meta"><span>Aluno: ${escapeHtml(studentName)}</span><span>${selectedGrade}º ano</span><span>${LEVEL_LABELS[selectedLevel]}</span><span>Acertos: ${score}/${questions.length}</span><span>Acertos: ${accPerc}%</span></div>${renderChart(perc)}<div class="results-table-wrap"><table class="results-table"><thead><tr><th>Q</th><th>Área</th><th>Valor</th><th>Resposta</th><th>Gabarito</th><th>Resultado</th></tr></thead><tbody>${rows}</tbody></table></div><div class="btn-row"><button class="btn green" onclick="sendResultsToProfessor(this)">Enviar resultado para o professor</button><button class="btn gray" onclick="copyResults()">Copiar gabarito</button><button class="btn outline" onclick="selectLevel(selectedLevel)">Refazer nível</button><button class="btn outline" onclick="showHome()">Voltar ao início</button></div><div class="notice" id="sendNotice">Resultado ainda não enviado.</div>`}
+function buildPayload(){const perc=getGradePercentage(), accPerc=Math.round((score/questions.length)*100);return {quiz:'Quiz OBR 2026 - Fundamental II',anoEscolar:selectedGrade+'º ano',nivel:LEVEL_LABELS[selectedLevel],nivelCodigo:selectedLevel,aluno:studentName,acertos:score,total:questions.length,percentual:perc,percentualAcertos:accPerc,nota:getGradeNumber(),pontosObtidos:getPointsEarned(),pontosPossiveis:getTotalPossiblePoints(),regraPontuacao:getScoringRuleText(),dataHora:new Date().toLocaleString('pt-BR'),respostas:studentAnswers.map(i=>({questao:i.questionNumber,area:i.area,valorQuestao:i.points,pergunta:i.question,alternativaAluno:i.selectedLetter,alternativaCorreta:i.correctLetter,respostaAluno:i.selectedAnswer,respostaCorreta:i.correctAnswer,resultado:i.isCorrect?'Correta':'Errada'}))}}
+function sendResultsToProfessor(btn){if(resultsAlreadySent){document.getElementById('sendNotice').innerHTML='<strong>Resultado já enviado.</strong>';return}resultsAlreadySent=true;if(btn){btn.disabled=true;btn.classList.add('hidden')}const payload=buildPayload();const form=document.createElement('form');form.method='POST';form.action=GOOGLE_APPS_SCRIPT_URL;form.target='hidden_iframe';form.style.display='none';const input=document.createElement('input');input.type='hidden';input.name='payload';input.value=JSON.stringify(payload);form.appendChild(input);document.body.appendChild(form);form.submit();document.getElementById('sendNotice').innerHTML='<strong>Resultado enviado.</strong>'}
+function generateResultsText(){let t='Quiz OBR 2026 - Fundamental II\nAluno: '+studentName+'\nAno: '+selectedGrade+'º ano\nNível: '+LEVEL_LABELS[selectedLevel]+'\nNota: '+formatDecimal(getGradeNumber())+' / '+formatDecimal(getTotalPossiblePoints())+'\n\n';studentAnswers.forEach(i=>{t+='Q'+i.questionNumber+' | '+i.area+' | '+i.selectedAnswer+' | Correta: '+i.correctAnswer+' | '+(i.isCorrect?'Correta':'Errada')+'\n'});return t}
+function copyResults(){const text=generateResultsText();if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(text).then(()=>alert('Gabarito copiado.')).catch(()=>fallbackCopy(text));else fallbackCopy(text)}
+function fallbackCopy(text){const a=document.createElement('textarea');a.value=text;a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);a.focus();a.select();try{document.execCommand('copy');alert('Gabarito copiado.')}catch(e){alert('Não foi possível copiar automaticamente.')}document.body.removeChild(a)}
+showHome();
+</script>
+</body>
+</html>
